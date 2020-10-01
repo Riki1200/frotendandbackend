@@ -16,7 +16,7 @@ const Msg = styled('span')`
 
 export const FormRegister = () => {
     const [state, setState] = useState(false);
-    const { data, setUser } = useFetch(`${API.login}register`);
+    const { data, setUser } = useFetch(API.login);
     let { value } = data;
 
     console.log(data);

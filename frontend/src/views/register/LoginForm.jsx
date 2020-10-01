@@ -42,7 +42,7 @@ const Msg = styled('p')`
 `;
 
 export const FormLogin = () => {
-    const { data, setUser } = useFetch(`${API.login}login`);
+    const { data, setUser } = useFetch(API.login);
 
 
     const [login, setLogin] = useState(false);
