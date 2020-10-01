@@ -1,0 +1,347 @@
+::placeholder {
+  color: #fff;
+}
+
+.container {
+  position: relative;
+}
+
+.container .sub_container .register_content {
+  position: relative;
+  width: 100%;
+  height: 668px;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  justify-items: center;
+  gap: 50px;
+  grid-template-rows: 500px 50px;
+  grid-template-columns: 100%;
+  background-image: url("/images/background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-clip: border-box;
+  background-attachment: fixed;
+}
+
+.container .sub_container .register_content .main_login {
+  margin-top: 30px;
+  height: 500px;
+  display: grid;
+  width: 100%;
+  place-content: center;
+  place-items: center;
+  justify-items: start;
+  background-color: hsla(235, 77%, 14%, 0.9);
+  border-radius: 2px;
+  grid-template-rows: 0.1fr 1fr;
+  transition: all 0.2s linear;
+  grid-template-areas:
+    "Regs"
+    "Login";
+}
+
+/*Login*/
+.container .sub_container .register_content .main_login .form_login {
+  padding: 10px 20px;
+  transition: all 0.2s linear;
+  height: 25ch;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  height: 100%;
+  animation: Apper forwards linear 0.2s;
+  grid-area: Login;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_login
+  .title_form {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 100;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_login
+  > .form_login-fields:not(.title_form):nth-child(1n) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  position: relative;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_login
+  .form_login-fields
+  #password,
+#email {
+  background-color: transparent;
+  padding: 8px 28px;
+  border-bottom: 1px solid rgb(152, 150, 241);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  color: #fff;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_login
+  .form_login-fields
+  #password:focus,
+#email:focus {
+  border-bottom: 1px solid #61a9ec;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_login
+  .form_login-fields
+  > label {
+  color: rgb(250, 250, 250);
+  position: absolute;
+  top: -20px;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_login
+  > .form_login-fields:nth-child(4) {
+  width: 100%;
+  align-self: flex-start;
+  flex-shrink: 10;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_login
+  > .form_login-fields:nth-child(4)
+  [type="submit"] {
+  padding: 5px 15px;
+  outline: none;
+  margin-top: 4px;
+  width: 100%;
+  border: none;
+  background-color: #3d3dff;
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+/**/
+.container .sub_container .register_content .main_login .button_next {
+  width: 100%;
+  text-align: center;
+  padding: 10px 10px;
+  grid-area: Regs;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .button_next
+  .button_register,
+.button_login {
+  display: inline-block;
+  border-radius: 2px;
+  padding: 5px 5ch;
+  margin-top: auto;
+  background-color: #200d4d;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 100;
+  text-decoration: none;
+}
+
+.container .sub_container .register_content .main_login .button_next .active {
+  border: 1px solid #fff;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .button_next
+  .button_register
+  span,
+.button_login span {
+  position: relative;
+}
+
+/*Register*/
+.container .sub_container .register_content .main_login .form_register {
+  transition: all 0.2s linear;
+  height: 25ch;
+  width: 100%;
+  height: 100%;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  animation: Apper forwards linear 0.2s;
+  grid-area: Login;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .title_form {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 100;
+  font-family: "Courier New", Courier, monospace;
+  margin-bottom: 10px;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .form_register--fields:not(.title_form):nth-child(1n) {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .form_register--fields
+  label {
+  position: absolute;
+  color: #fff;
+  top: -15px;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .form_register--fields:nth-child(2)
+  input,
+.form_register--fields:nth-child(3) input,
+.form_register--fields:nth-child(4) input {
+  background-color: transparent;
+  border-bottom: 1px solid rgb(152, 150, 241);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 3px;
+  color: #fff;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .form_register--fields:nth-child(6)
+  input {
+  width: 100%;
+  padding: 5px 15px;
+  background-color: #3d3dff;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .form_register--fields:nth-child(5)
+  input {
+  margin-top: 15px;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .form_register--fields:nth-child(2)
+  input:focus,
+.form_register--fields:nth-child(3) input:focus,
+.form_register--fields:nth-child(4) input:focus {
+  border-bottom: 1px solid #61a9ec;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .messages_register
+  .span_check {
+  padding: 5px 20px;
+  color: #fff;
+  font-weight: 100;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin-bottom: 10px;
+}
+
+@keyframes Apper {
+  to {
+    opacity: 1;
+  }
+  from {
+    opacity: 0.2;
+  }
+}

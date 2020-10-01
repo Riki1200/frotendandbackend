@@ -1,0 +1,152 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: hsl(0, 0%, 100%);
+  --color-secundary: hsl(0, 0%, 0%);
+  --bg-primary: hsl(232, 55%, 62%);
+  --bg-secundary: hsl(245, 67%, 24%);
+  --btn-primary: hsl(130, 62%, 42%);
+  --btn-secundary: hsl(221, 68%, 62%);
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+.container {
+  width: 100%;
+  gap: 20px;
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: 1fr;
+}
+
+.container .sub_container .header_content {
+  justify-items: center;
+  width: 100%;
+
+  background-color: var(--bg-secundary);
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.container .sub_container .header_content .header_title {
+  padding: 15px 25px;
+  margin-left: -20px;
+  flex-shrink: 5;
+}
+.container .sub_container .header_content .title {
+  color: var(--color-primary);
+  font-family: "Fira code", "Courier New", Courier, monospace;
+  font-weight: 100;
+  border-bottom: 1px solid var(--color-primary);
+  cursor: pointer;
+}
+
+.container .sub_container .header_content .nav__content--nav {
+  widows: inherit;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.container .sub_container .header_content .logout_content {
+  flex-basis: 100px;
+  height: 100%;
+  align-self: center;
+  text-align: center;
+}
+.container .sub_container .header_content .logout_content .button_logout {
+  font-weight: bold;
+  background-color: var(--color-secundary);
+  border: none;
+  border-radius: 3px;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  cursor: pointer;
+  padding: 10px 10px;
+  transition: background-color, color 200ms linear, 200ms linear;
+  outline: none;
+  user-select: all;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.container .sub_container .header_content .logout_content .button_logout:hover {
+  color: hsla(0, 0%, 83%, 0.847);
+  background-color: hsla(0, 0%, 83%, 0.39);
+}
+
+.container
+  .sub_container
+  .header_content
+  .nav__content--nav
+  .nav__list--content {
+  flex-shrink: 1;
+  list-style: none;
+  display: flex;
+  height: 100%;
+  flex-grow: 1;
+  justify-content: center;
+  gap: 20px;
+  align-items: baseline;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 10px 10px;
+}
+
+.container
+  .sub_container
+  .header_content
+  .nav__content--nav
+  .nav__list--content
+  .li__item--nav {
+  padding: 5px 5px;
+}
+
+.container
+  .sub_container
+  .header_content
+  .nav__content--nav
+  .nav__list--content
+  .li__item--nav
+  .nav__link {
+  padding: 12px 15px;
+  text-decoration: none;
+  font-size: 1.111rem;
+  font-weight: 100;
+  color: var(--color-primary);
+  font-family: "Fira code", "Times New Roman", Times, serif;
+}
+
+.container
+  .sub_container
+  .header_content
+  .nav__content--nav
+  .nav__list--content
+  .li__item--nav
+  .nav_link--active {
+  background-color: var(--bg-primary);
+  border-radius: 2px;
+}
+/* Container */
+.container .sub_container .main_container {
+  padding: 10px 50px;
+  display: flex;
+  justify-content: center;
+}
