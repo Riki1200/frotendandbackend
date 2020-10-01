@@ -1,8 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-let Histoies = [
-    {}, {}, {}, {}, {}
-]
+
+
+
+
 
 export const Users = function () {
     return <>

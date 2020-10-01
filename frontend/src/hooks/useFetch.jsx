@@ -17,6 +17,7 @@ export function useFetch(url) {
             return await api.json();
         };
         getHttp().then(response => {
+            console.log(response)
             setData({ value: response.value });
         })
     }, [user, setUser, url])

@@ -31,11 +31,12 @@ const LoginView = function () {
     return <>
         <Switch>
             <PrivateRoute path='/system' component={Home} />
-            <Route path='/' render={() => <div className="register_content">
-                <Register />
-                <Footer />
-            </div>
-            }>
+            <Route path='/' render={() => (
+                <div className="register_content">
+                    <Register />
+                    <Footer />
+                </div>
+            )}>
             </Route>
         </Switch>
     </>

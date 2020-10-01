@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 
-export const useUpdate = (url, defaultValue) => {
+export const useUpdate = (url, defaultValue = { name: null, history: null }) => {
     const [update, setUpdate] = useState(defaultValue);
     const [error, setError] = useState({})
 

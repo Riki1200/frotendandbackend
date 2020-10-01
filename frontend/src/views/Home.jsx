@@ -2,9 +2,9 @@ import React from 'react';
 import { Header } from './Header';
 import { Switch, Route } from 'react-router-dom';
 import { Footer } from './Footer';
-import { Add } from '../components/AddUser';
-import { Histroy } from '../components/History';
-import { Users } from '../components/User';
+import { Add } from '../components/AddUser/AddUser';
+import { Histroy } from '../components/History/History';
+import { Users } from '../components/User/User';
 
 
 

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import API from '../../api/index';
 import styled from 'styled-components';
 import { useFetch } from '../../hooks/useFetch';
-import { ModalAll } from '../../components/Portal';
+import { ModalAll } from './../Portal';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Redirect } from 'react-router-dom';
 import { FakeToken } from '../../helpers/tokenHelper';
@@ -10,6 +10,7 @@ import { LogoutIcon } from './Logout';
 const Spinner = styled('img')`
     animation: Rotate linear forwards 2s infinite;
     width: 300px;
+    position: absolute;
     @keyframes  Rotate{
         to {
             transfrom: rotate(0deg)
@@ -62,7 +63,7 @@ export const FormLogin = () => {
 
             setHidden(true);
             setTimeout(() => { setHidden(false); }, 1500)
-            if (value) setStorage(value);
+            // if (value) setStorage(value);
             setLogin(false);
             setUser({ email: email, password: password });
         } else {
@@ -73,7 +74,15 @@ export const FormLogin = () => {
         }
 
     }
+    useEffect(() => {
+        setInterval(() => {
+            if (value === true) {
+                setStorage(value);
+                window.location.reload();
+            }
+        }, 2500);
 
+    }, [value]);
 
     console.log(data)
 
@@ -86,7 +95,10 @@ export const FormLogin = () => {
         return <>
             <Redirect to='/' />
             {hidden ?
-                <ModalAll children={<Spinner alt='Spinner' src='/images/tail-spin.svg' />} />
+                <ModalAll     >
+                    <Spinner alt='Spinner' src='/images/tail-spin.svg' />
+                    <h2>Loading...</h2>
+                </ModalAll>
                 :
                 null}
             <form className='form_login' method="POST">
@@ -107,7 +119,7 @@ export const FormLogin = () => {
                     <button type='submit' onClick={(ev) => LoginForm(ev)}> Sign In<LogoutIcon src='/icons/logout.svg' alt='icon' /></button>
                 </div>
                 {data.value === false ? <Msg type={'0'}>Datos incorrectos</Msg> : null}
-                {data.value === true ? <Msg type={'1'}>Usuario comprobado, puede volver darle click</Msg> : null}
+                {data.value === true ? <Msg type={'1'}>Usuario valido, espero un momento para iniciar session</Msg> : null}
             </form>
 
         </>
