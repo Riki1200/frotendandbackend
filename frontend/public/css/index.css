@@ -28,6 +28,12 @@ body {
   grid-template-columns: 1fr;
 }
 
+.container .sub_container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
 .container .sub_container .header_content {
   justify-items: center;
   width: 100%;
@@ -149,4 +155,5 @@ body {
   padding: 10px 50px;
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }

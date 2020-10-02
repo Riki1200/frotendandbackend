@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 
 
-const ContextTheme = React.createContext('blue_ligth');
+const ContextTheme = React.createContext('blueLight');
 const ContextUpdateTheme = React.createContext();
 
 

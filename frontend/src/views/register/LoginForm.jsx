@@ -66,6 +66,8 @@ export const FormLogin = () => {
             // if (value) setStorage(value);
             setLogin(false);
             setUser({ email: email, password: password });
+            setPassword('');
+            setEmail('');
         } else {
             setLogin(true);
             setStorage(false);

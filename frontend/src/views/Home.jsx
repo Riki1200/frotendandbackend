@@ -9,9 +9,30 @@ import styled from 'styled-components';
 
 const BoxTheme = styled('div')`
     position: absolute;
-    left: -150px;
+    right: -228px;
+    background-color: #eff0f0;
+    padding: 2rem 5ch;
+    transition: right linear 200ms;
+    &::after{
+        content: "<";
+        font-size: 2.5rem;
+        color: #000;
+        position: absolute;
+        height: 50px;
+        width: 30px;
+        left: 10px;
+        top: 32.5px;
+        z-index: 1;
+    }
+    &:hover {
+        right:-20px;
+    }
 `;
-const ButtonTheme = styled('button')``;
+const ButtonTheme = styled('button')`
+    font-weight: bold; 
+    border-radius: 3px;   
+    padding: 1rem 3rem;
+`;
 
 export const Home = () => {
     return <>
