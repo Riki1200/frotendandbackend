@@ -5,8 +5,13 @@ import { Footer } from './Footer';
 import { Add } from '../components/AddUser/AddUser';
 import { Histroy } from '../components/History/History';
 import { Users } from '../components/User/User';
+import styled from 'styled-components';
 
-
+const BoxTheme = styled('div')`
+    position: absolute;
+    left: -150px;
+`;
+const ButtonTheme = styled('button')``;
 
 export const Home = () => {
     return <>
@@ -23,6 +28,9 @@ export const Home = () => {
                     <Add />
                 </Route>
             </Switch>
+            <BoxTheme>
+                <ButtonTheme>Change Color</ButtonTheme>
+            </BoxTheme>
         </main>
         <Footer />
     </>

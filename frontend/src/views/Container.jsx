@@ -4,7 +4,7 @@ import { Home } from "./Home";
 import { Register } from "./register/Register";
 import { Route, Switch } from "react-router-dom";
 import { PrivateRoute } from '../routes/Private.routes';
-export const SessionContext = React.createContext();
+import { UseThemeContext } from '../context/useContextTheme';
 
 const FooterS = styled("footer")`
   width: 100%;
@@ -29,16 +29,20 @@ const Footer = function () {
 
 const LoginView = function () {
     return <>
-        <Switch>
-            <PrivateRoute path='/system' component={Home} />
-            <Route path='/' render={() => (
-                <div className="register_content">
-                    <Register />
-                    <Footer />
-                </div>
-            )}>
-            </Route>
-        </Switch>
+        <UseThemeContext>
+            <Switch>
+                <PrivateRoute path='/system' component={Home} />
+
+                <Route path='/' render={() => (
+                    <div className="register_content">
+                        <Register />
+                        <Footer />
+                    </div>
+                )}>
+                </Route>
+
+            </Switch>
+        </UseThemeContext>
     </>
 
 };

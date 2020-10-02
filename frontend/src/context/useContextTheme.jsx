@@ -8,13 +8,13 @@ const ContextUpdateTheme = React.createContext();
 export const useTheme = () => useContext(ContextTheme);
 export const useThemeUpdate = () => useContext(ContextUpdateTheme);
 
-export const useThemeContext = ({ children }) => {
+export const UseThemeContext = ({ children }) => {
 
     const [theme, setTheme] = useState(false);
 
     const BlueLight = {
-        backgroundColor: changeColor ? '#2CA2FF' : '#000068',
-        color: changeColor ? '#000' : '#fff'
+        backgroundColor: theme ? '#2CA2FF' : '#000068',
+        color: theme ? '#000' : '#fff'
     }
 
     return <ContextTheme.Provider value={theme, BlueLight}>
