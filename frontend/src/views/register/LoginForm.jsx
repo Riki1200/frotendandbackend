@@ -82,7 +82,7 @@ export const FormLogin = () => {
             }
         }, 2500);
 
-    }, [value]);
+    });
 
     console.log(data)
 
