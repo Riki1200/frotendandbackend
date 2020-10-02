@@ -121,7 +121,7 @@ export const FormLogin = () => {
                     <button type='submit' onClick={(ev) => LoginForm(ev)}> Sign In<LogoutIcon src='/icons/logout.svg' alt='icon' /></button>
                 </div>
                 {data.value === false ? <Msg type={'0'}>Datos incorrectos</Msg> : null}
-                {data.value === true ? <Msg type={'1'}>Usuario valido, espero un momento para iniciar session</Msg> : null}
+                {data.value === true ? <Msg width="300" type={'1'}>Usuario valido, espero un momento para iniciar session</Msg> : null}
             </form>
 
         </>
