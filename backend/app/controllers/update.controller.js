@@ -1,4 +1,4 @@
-import DBModel, { sqlite as QL } from '../model/model.user.js';
+const DBModel = require('../model/model.user');
 
+const db_path = (__dirname.replace('/controllers', '') + '/db/Users.sqlite');
 
-let DB = DBModel(__dirname + '/db/Users.sqlite');

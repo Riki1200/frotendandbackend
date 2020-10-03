@@ -32,7 +32,7 @@
   place-content: center;
   place-items: center;
   justify-items: start;
-  background-color: hsla(235, 77%, 14%, 0.9);
+  background-color: hsla(235, 77%, 14%, 0.1);
   border-radius: 2px;
   grid-template-rows: 0.1fr 1fr;
   transition: all 0.2s linear;

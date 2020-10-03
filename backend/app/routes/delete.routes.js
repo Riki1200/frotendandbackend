@@ -1,9 +1,13 @@
-import express from 'express';
+const express = require('express');
 
-const router = express.Router({ caseSensitive: true });
+const DeleteUser = express.Router({ caseSensitive: true });
 
 
-export const Delete = router.delete('/api/:id', function (req,res) {
-    
+DeleteUser.delete('/api/:id', function (req, res) {
+
 });
+
+module.exports = {
+    DeleteUser
+}
 

@@ -1,9 +1,13 @@
-import express from 'express';
+const express = require('express');
 
-export const router = express.Router({ caseSensitive: true });
+const getData = express.Router({ caseSensitive: true });
 
 
-export const get = router.get('/api',function (req,res) {
-    
+getData.get('/api/get', function (req, res) {
+
 });
+
+module.exports = {
+    getData
+}
 
