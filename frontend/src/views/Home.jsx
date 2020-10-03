@@ -10,9 +10,9 @@ import styled from 'styled-components';
 const BoxTheme = styled('div')`
     position: absolute;
     right: -228px;
-    background-color: #eff0f0;
+    background-color: var(--transparent-color);
     padding: 2rem 5ch;
-    transition: right linear 200ms;
+    transition: right,background-color linear 200ms, linear 200ms;
     &::after{
         content: "<";
         font-size: 2.5rem;
@@ -26,6 +26,7 @@ const BoxTheme = styled('div')`
     }
     &:hover {
         right:-20px;
+        background-color: hsl(180, 3%, 94%, 0.8);
     }
 `;
 const ButtonTheme = styled('button')`

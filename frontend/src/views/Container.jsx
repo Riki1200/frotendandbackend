@@ -31,8 +31,9 @@ const LoginView = function () {
     return <>
         <UseThemeContext>
             <Switch>
-                <PrivateRoute path='/system' component={Home} />
-
+                <PrivateRoute path='/system' component={Home} auth={
+                    window.localStorage.key(0) !== null ? true : false
+                } />
                 <Route path='/' render={() => (
                     <div className="register_content">
                         <Register />

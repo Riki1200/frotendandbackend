@@ -11,6 +11,7 @@
   --bg-secundary: hsl(245, 67%, 24%);
   --btn-primary: hsl(130, 62%, 42%);
   --btn-secundary: hsl(221, 68%, 62%);
+  --transparent-color: hsl(180, 3%, 94%, 0.2);
 }
 
 body {
