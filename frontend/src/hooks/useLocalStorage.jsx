@@ -10,7 +10,7 @@ export const useLocalStorage = (item) => {
                 window.localStorage.setItem('akt-login', JSON.stringify({
                     value: registerUser,
                     token: item,
-                    dateExpire: Date.now() + 160000
+                    dateExpire: Date.now() + 260000
                 }));
             }
 

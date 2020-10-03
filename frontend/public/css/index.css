@@ -153,7 +153,7 @@ body {
 }
 /* Container */
 .container .sub_container .main_container {
-  padding: 10px 50px;
+  padding: 1px 50px;
   display: flex;
   justify-content: center;
   overflow: hidden;

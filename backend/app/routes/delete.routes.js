@@ -3,7 +3,7 @@ const express = require('express');
 const DeleteUser = express.Router({ caseSensitive: true });
 
 
-DeleteUser.delete('/api/:id', function (req, res) {
+DeleteUser.delete('/api/:id', (req, res) => {
 
 });
 

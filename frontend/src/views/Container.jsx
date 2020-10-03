@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+
 import { Home } from "./Home";
 import { Register } from "./register/Register";
 import { Route, Switch } from "react-router-dom";
 import { PrivateRoute } from '../routes/Private.routes';
 import { UseThemeContext } from '../context/useContextTheme';
+import { FooterS } from '../stylesComponents/styles-components';
 
-const FooterS = styled("footer")`
-  width: 100%;
-  color: #fff;
-  height: 70px;
-  text-align: center;
-  font-weight: bold;
-  line-height: 65px;
-`;
 
 const Footer = function () {
     let [date, setDate] = useState(null);

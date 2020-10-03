@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 
 
 
-export const Header = function () {
+export const Header = function ({ styleContext }) {
     const [state, setState] = useState(false);
     const loadStorage = function () {
         if (window.localStorage.key(0)) {
@@ -16,12 +16,12 @@ export const Header = function () {
     if (state) {
         return <Redirect to='/' />
     }
-    return <header className='header_content'>
+    return <header className='header_content' style={{ ...styleContext }} >
         <div className='header_title'>
             <h2 className='title'>ReactNode</h2>
         </div>
         <Navbar />
         <LogoutUser loadStorage={loadStorage} />
-    </header>
+    </header >
 
 }

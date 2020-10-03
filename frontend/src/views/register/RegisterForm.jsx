@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from "react";
 import API from '../../api/index';
 import { useFetch } from "../../hooks/useFetch";
-
-import styled from 'styled-components';
-
+import { MsgRegister } from '../../stylesComponents/styles-components'
 
 
-const Msg = styled('span')`
-    background-color: ${props => props.error || '#48CF76'};
-    padding: 8px 20px;
-    font-family: 'Courier New', Courier, monospace;
-    color:#fff;
 
-`
 
 export const FormRegister = () => {
     const [state, setState] = useState(false);
@@ -79,8 +71,8 @@ export const FormRegister = () => {
                     <input type="submit" value="Registrar" />
                 </div>
                 <div className="messages_register">
-                    {value ? <Msg>Registrado</Msg> : null}
-                    {state ? <Msg className="span_check" error='#eb0f3aff'>Campos vacios</Msg> : null}
+                    {value ? <MsgRegister>Registrado</MsgRegister> : null}
+                    {state ? <MsgRegister className="span_check" error='#eb0f3aff'>Campos vacios</MsgRegister> : null}
                 </div>
             </form>
         </>

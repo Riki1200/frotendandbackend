@@ -1,8 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-
-
-
+import { BGImage } from '../../stylesComponents/styles-components';
 
 
 export const Users = function () {
@@ -11,6 +9,10 @@ export const Users = function () {
             <title>Home | Users</title>
             <meta name='description' content='Inicio de la pagina, donde se veran su inicios' />
         </Helmet>
-        <h1>Welcome</h1>
+        <div className='content--user'>
+            <section className='bg--content'>
+                <BGImage src='/images/Frame.svg' alt='ilustration' />
+            </section>
+        </div>
     </>
 }

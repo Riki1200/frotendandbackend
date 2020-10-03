@@ -1,46 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../api/index';
-import styled from 'styled-components';
 import { useFetch } from '../../hooks/useFetch';
 import { ModalAll } from './../Portal';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Redirect } from 'react-router-dom';
 import { FakeToken } from '../../helpers/tokenHelper';
-import { LogoutIcon } from './Logout';
-const Spinner = styled('img')`
-    animation: Rotate linear forwards 2s infinite;
-    width: 300px;
-    position: absolute;
-    @keyframes  Rotate{
-        to {
-            transfrom: rotate(0deg)
-        };
-        from {
-            transform: rotate(360deg);
-        };
-    };
-`;
+import { Spinner, Msg, LogoutIcon } from '../../stylesComponents/styles-components';
 
-const Msg = styled('p')`
-    margin-top: 15px;
-    width: ${props => props.width || '200px'};
-    padding: 10px 15px;
-    color:#Fff;
-    background-color: ${props => props.type === '0' ? '#eb0f3aff' : '#48CF76'} ;
-    text-align:center;
-    animation: FadeIn forwards linear 250ms;
-    font-size: 1rem;
-    font-weight: 600;
-    @keyframes  FadeIn{
-        to {
-            
-                opacity: 1;
-        };
-        from {
-                opacity: 0.2;
-        };
-    }
-`;
+
 
 export const FormLogin = () => {
     const { data, setUser } = useFetch(API.login);
@@ -57,10 +24,7 @@ export const FormLogin = () => {
 
     const LoginForm = (ev) => {
         ev.preventDefault();
-
-
         if (email && password) {
-
             setHidden(true);
             setTimeout(() => { setHidden(false); }, 1500)
             // if (value) setStorage(value);
@@ -85,12 +49,7 @@ export const FormLogin = () => {
         }, 2500);
 
     });
-
     console.log(data)
-
-
-
-
     if (window.localStorage.getItem('akt-login') !== null) {
         return <Redirect to='/system' />
     } else
