@@ -84,7 +84,7 @@ export const Add = function () {
                         <label>
                             Año
               <input type="text" name="age" onChange={HandleChange} /> / Mes{" "}
-                            <select id="month" name="month" onChange={HandleChange}>
+                            <select id="month" name="month" value={''} onChange={HandleChange}>
                                 <option value="January">January</option>
                                 <option value="February">February</option>
                                 <option value="March">March</option>

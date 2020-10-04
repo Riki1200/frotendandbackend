@@ -2,36 +2,31 @@ import styled from 'styled-components';
 /**From button theme */
 export const BoxTheme = styled('div')`
     position: absolute;
-    right: -228px;
+    right: -120px;
     background-color: ${props => props.bg};
-    padding: 2rem 4.2ch;
+    padding: 10px 5px;
     transition: right,background-color linear 200ms, linear 200ms;
     top: 250px;
-    &::after{
-        content: "<";
-        color:#fff;
-        font-size: 2.8rem;
-        color:#fff;
-      
-        position: absolute;
-        height: 50px;
-        width: 30px;
-        left: 5px;
-        top: 32.5px;
-        z-index: 1;
-    }
     &:hover {
         right:-20px;
-        background-color: hsl(180, 3%, 94%, 0.8);
+        background-color: hsl(180, 3%, 94%, 0.6);
     }
+    display:flex;
+    justify-content:center;
+    flex-flow:column wrap;
+    align-items:center;
+    gap: 20px;
 `;
-export const ButtonTheme = styled('button')`
+export const ButtonThemeOne = styled('button')`
     font-weight: bold; 
-    border-radius: 3px;   
-    padding: 1rem 3rem;
+    clip-path:circle(30px);  
+    padding: 2rem 5rem;
+
     border:none;
     outline: none;
+    background-color:${props => props.bg};
 `;
+
 /**From login **/
 export const Spinner = styled('img')`
     animation: Rotate linear forwards 2s infinite;
@@ -70,11 +65,16 @@ export const Msg = styled('p')`
 /**IMAGES STYLEDCOMPONENTS */
 
 export const BGImage = styled('img')`
-    max-width: 100%;
-    max-height: 100%;
-    background-origin: content-box;
+    position:absolute;
+    max-width: 120%;
+   
+    left:-50px;
+    top: -50px;
+    background-size: cover;
     object-fit: contain;
     background-size: cover;
+    z-index: 0;
+    pointer-events:none;
 `;
 
 export const LogoutIcon = styled('img')`
@@ -91,8 +91,7 @@ export const MsgRegister = styled('span')`
     padding: 8px 20px;
     font-family: 'Courier New', Courier, monospace;
     color:#fff;
-
-`
+`;
 /**Footer login and register */
 
 
@@ -103,4 +102,46 @@ export const FooterS = styled("footer")`
   text-align: center;
   font-weight: bold;
   line-height: 65px;
+`;
+/***
+ * For portals
+ *
+ */
+
+export const Modal = styled('div')`
+    position: absolute;
+    width: 100%;
+    height:100%;
+    background-color: #2D40FF;
+    background-image: linear-gradient(#01031b,#4d72de);
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    & ~ .remove {
+        display:none;
+    }
+`;
+export const Children = styled('div')`
+    position:relative;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content: center;            
+    align-items:center; 
+    top: 0;
+    h2{
+        
+        margin-left:auto;
+        margin-right: auto;
+        text-align:center;
+     
+        font-size: 2rem;
+        color:#fff;
+        font-weight: 100;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
 `;

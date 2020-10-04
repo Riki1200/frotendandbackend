@@ -5,16 +5,14 @@ import { Footer } from './Footer';
 import { Add } from '../components/AddUser/AddUser';
 import { Histroy } from '../components/History/History';
 import { Users } from '../components/User/User';
-import { useTheme, useThemeUpdate } from '../context/useContextTheme';
-import { BoxTheme, ButtonTheme } from '../stylesComponents/styles-components';
+import { useTheme } from '../context/useContextTheme';
+
 
 
 export const Home = () => {
-    let updateTheme = useThemeUpdate();
+
     let ThemeConsumer = useTheme();
-    const HandleTheme = () => {
-        updateTheme(r => !r);
-    }
+
 
     return <>
         <Header styleContext={ThemeConsumer} />
@@ -30,9 +28,6 @@ export const Home = () => {
                     <Add />
                 </Route>
             </Switch>
-            <BoxTheme bg={ThemeConsumer.backgroundColor}>
-                <ButtonTheme onClick={HandleTheme}>Change Color</ButtonTheme>
-            </BoxTheme>
         </main>
         <Footer styleContext={ThemeConsumer} />
     </>

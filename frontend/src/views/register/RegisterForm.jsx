@@ -8,7 +8,7 @@ import { MsgRegister } from '../../stylesComponents/styles-components'
 
 export const FormRegister = () => {
     const [state, setState] = useState(false);
-    const { data, setUser } = useFetch(API.login);
+    const { data, setUser } = useFetch(API.register);
     let { value } = data;
 
     console.log(data);

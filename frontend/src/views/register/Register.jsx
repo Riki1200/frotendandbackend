@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet-async';
 export const Register = () => {
     const [state, setState] = useState(true);
     const HandleChange = () => {
-        setState(r => !r);
+        setState(!state);
     }
     return <>
         <Helmet title='Iniciar session | Registrase' />
