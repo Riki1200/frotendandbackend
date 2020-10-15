@@ -21,12 +21,12 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-clip: border-box;
-  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
 .container .sub_container .register_content .main_login {
-  margin-top: 30px;
-  height: 500px;
+  margin-top: 60px;
+  height: 600px;
   display: grid;
   width: 100%;
   place-content: center;
@@ -34,7 +34,7 @@
   justify-items: start;
   background-color: hsla(235, 77%, 14%, 0.1);
   border-radius: 2px;
-  grid-template-rows: 0.1fr 1fr;
+  grid-template-rows: 0.1fr 2fr;
   transition: all 0.2s linear;
   grid-template-areas:
     "Regs"
@@ -63,9 +63,10 @@
   .form_login
   .title_form {
   color: #fff;
-  font-size: 1.5rem;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 2rem;
+
   font-weight: 100;
+  text-align: center;
 }
 
 .container
@@ -92,12 +93,14 @@
 #email {
   background-color: transparent;
   padding: 8px 28px;
+  font-size: 1.3rem;
   border-bottom: 1px solid rgb(152, 150, 241);
   border-top: none;
   border-left: none;
   border-right: none;
   outline: none;
   color: #fff;
+  width: 280px;
 }
 
 .container
@@ -210,7 +213,7 @@
 .container .sub_container .register_content .main_login .form_register {
   transition: all 0.2s linear;
   height: 25ch;
-  width: 100%;
+
   height: 100%;
   padding: 10px 20px;
   display: flex;
@@ -228,7 +231,7 @@
   .form_register
   .title_form {
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 100;
   font-family: "Courier New", Courier, monospace;
   margin-bottom: 10px;
@@ -276,10 +279,11 @@
   border-left: none;
   border-right: none;
   outline: none;
-  padding-top: 10px;
+  width: 250px;
+  padding-top: 20px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: 3px;
+  padding-bottom: 10px;
   color: #fff;
 }
 

@@ -8,24 +8,11 @@ export const LogoutIcon = styled('img')`
 
 
 
-const Observer = new Proxy({
-    name: 'Romeo',
-    password: true,
-    token: false,
-    to: '/any',
-    acessProvider: true
-}, {
-
-});
-
-console.log(Observer)
-
-
 export const LogoutUser = ({ loadStorage }) => {
 
     const [expire, setExpire] = useState(false);
 
-    useEffect(() => {
+    /*useEffect(() => {
 
         let getStorage = window.localStorage.getItem(window.localStorage.key(0));
         console.log(getStorage)
@@ -42,7 +29,7 @@ export const LogoutUser = ({ loadStorage }) => {
             }, 1500);
         }
     }, [expire]);
-
+*/
     if (expire === true) {
         return <Redirect to='/' />;
     }

@@ -1,30 +1,39 @@
+import React from 'react';
+
 import styled from 'styled-components';
 /**From button theme */
 export const BoxTheme = styled('div')`
-    position: absolute;
-    right: -120px;
+   
+
     background-color: ${props => props.bg};
-    padding: 10px 5px;
+    padding: 10px 10px;
     transition: right,background-color linear 200ms, linear 200ms;
-    top: 250px;
+    height: 32px;
     &:hover {
         right:-20px;
-        background-color: hsl(180, 3%, 94%, 0.6);
     }
     display:flex;
     justify-content:center;
+    align-items: flex-start;
     flex-flow:column wrap;
-    align-items:center;
     gap: 20px;
+    width: 90px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+     border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;   
 `;
 export const ButtonThemeOne = styled('button')`
-    font-weight: bold; 
-    clip-path:circle(30px);  
-    padding: 2rem 5rem;
+    transition: all linear 200ms;
 
+    font-weight: bold; 
+    clip-path:circle(12px);  
+    padding: 15px 15px;
+    margin-left: 0;
     border:none;
     outline: none;
     background-color:${props => props.bg};
+    transform:${props => props.checked ? 'translateX(50px)' : 'translateX(0px)'}
 `;
 
 /**From login **/
@@ -102,6 +111,7 @@ export const FooterS = styled("footer")`
   text-align: center;
   font-weight: bold;
   line-height: 65px;
+  margin-top: 80px;
 `;
 /***
  * For portals
@@ -145,3 +155,96 @@ export const Children = styled('div')`
         font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
 `;
+/****** Users********/
+
+export const CardContent = styled('ol')`
+    transition: all linear 300ms;
+    list-style: none;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items:flex-start;
+    align-content: center;  
+    padding: 10px 20px;
+    gap: 30px;
+    width: 100%;
+    height:100%;
+`;
+
+export const CardHistory = styled('li')`
+
+    align-self:flex-start;
+    width: 100%;
+    position:relative;  
+    background-color:${props => props.bg};
+    flex-wrap: wrap;
+    color:${props => props.color};
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    padding: 10px;
+   
+     .card_content {    
+        flex-shrink: 10;
+        padding: 10px 5px;
+        gap: 10px;
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+        align-items:flex-start;
+        .history_person{
+            align-self: center;
+            flex-basis: 200px;
+            flex-shrink: 10;
+            flex-grow: 10;
+        }
+      
+        img{
+            max-width: 100%;
+            object-fit: contain;
+            align-self: flex-start;
+            clip-path: circle(100px);
+            transition: clip-path linear 200ms;
+            
+            &:hover {
+                clip-path: circle(130px);
+                transform: translateX(0px); 
+            }
+        }
+          .name_person{
+            align-self: flex-start;
+            font-family:Abril;
+            font-size: 4rem;
+            font-weight: 100; 
+            text-align: center;
+            
+        }
+        .content_alive{
+            align-self: center;
+            
+            width: 100%;
+
+        }
+    }
+  
+    &::after {
+           background-color: ${props => props.color};
+           content: "";
+           height: 10px;
+           position: absolute;
+           left: 0;
+           bottom: 0;
+        
+           width: 200px;
+    }
+
+
+`;
+
+
+
+
+
