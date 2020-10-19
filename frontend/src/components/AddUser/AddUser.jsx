@@ -13,7 +13,7 @@ export const Add = function () {
     let formatear = new Intl.DateTimeFormat("en-US");
 
     const handlePrevent = function (ev) {
-        let formData = new FormData(ev.target);
+
         ev.preventDefault();
 
         setLoading(!loading);
