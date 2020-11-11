@@ -4,39 +4,35 @@ import { Home } from "./Home";
 import { Register } from "./register/Register";
 import { Route, Switch } from "react-router-dom";
 import { PrivateRoute } from '../routes/Private.routes';
-import { UseThemeContext } from '../context/useContextTheme';
+
 import { FooterS } from '../stylesComponents/styles-components';
 
 
-const Footer = function () {
+
+
+const View = function () {
     let [date, setDate] = useState(null);
     useEffect(() => {
         setDate(new Date().getFullYear());
     }, [date]);
-    return (
-        <FooterS className="footer_form--content">
-            Login CRUD &copy; {date}
-        </FooterS>
-    );
-};
 
-const LoginView = function () {
     return <>
-        <UseThemeContext>
-            <Switch>
-                <PrivateRoute path='/system' component={Home} auth={
-                    window.localStorage.key(0) !== null ? true : false
-                } />
-                <Route path='/' render={() => (
-                    <div className="register_content">
-                        <Register />
-                        <Footer />
-                    </div>
-                )}>
-                </Route>
 
-            </Switch>
-        </UseThemeContext>
+        <Switch>
+            <PrivateRoute path='/system' component={Home} auth={
+                window.localStorage.key(0) !== null ? true : false
+            } />
+            <Route path='/'>
+                <div className="register_content">
+                    <Register />
+                    <FooterS className="footer_form--content">
+                        Login CRUD &copy; {date}
+                    </FooterS>
+                </div>
+            </Route>
+
+        </Switch>
+
     </>
 
 };
@@ -45,7 +41,7 @@ export function Container() {
     return <>
         <div className="container">
             <div className='sub_container'>
-                <LoginView />
+                <View />
             </div>
         </div>
     </>

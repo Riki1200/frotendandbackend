@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 export const LogoutIcon = styled('img')`
     width: 18px;
-    filter: invert(100%);
+    
 `;
 
 
@@ -30,6 +30,14 @@ export const LogoutUser = ({ loadStorage }) => {
         }
     }, [expire]);
 */
+    useEffect(() => {
+
+        return () => {
+            setExpire(false)
+        }
+    }, [expire])
+
+
     if (expire === true) {
         return <Redirect to='/' />;
     }

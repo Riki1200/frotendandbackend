@@ -3,14 +3,14 @@ export default {
     register: 'http://localhost:4000/api/register',
     get: 'http://localhost:4000/api/get',
     add: 'http://localhost:4000/api/add',
-    put: 'http://localhost:4000/api/put',
-    update: 'http://localhost:4000/api/update'
+    delete: 'http://localhost:4000/api/delete/',
+    update: 'http://localhost:4000/api/update/'
 };
 
 export const HistoryUser = [
     {
         name: 'Gengis Kan',
-        history: "Gengis Kan (Acerca de este sonido en mongol, Чингис хаан, romanización: Chinguis Jaan; Dulun Boldak, ca. 1162 o puede que el 16 de abril de 1162-Yinchuan, 18 de agosto de 1227) fue un guerrero y conquistador mongol que unificó a las tribus nómadas de esta etnia del norte de Asia, fundando el primer Imperio mongol, considerado el segundo más grande de la historia en términos de expansión territorial. Bajo su liderazgo como Gran Kan, los mongoles comenzaron una oleada de conquistas que extendió su dominio a un vasto territorio, desde Europa Oriental hasta el océano Pacífico, y desde Siberia hasta Mesopotamia, la India e Indochina. En la primera fase de esta expansión, las hordas mongolas conquistaron importantes reinos de Asia, como el Imperio Jin del norte de China (1211-1216), el Imperio tanguta, el Kanato de Kara-Kitai, el Imperio corasmio o la dinastía Song en el sur de China.",
+        history: "Gengis Kan fue un guerrero y conquistador mongol que unificó a las tribus nómadas de esta etnia del norte de Asia, fundando el primer Imperio mongol, considerado el segundo más grande de la historia en términos de expansión territorial. Bajo su liderazgo como Gran Kan, los mongoles comenzaron una oleada de conquistas que extendió su dominio a un vasto territorio, desde Europa Oriental hasta el océano Pacífico, y desde Siberia hasta Mesopotamia, la India e Indochina. En la primera fase de esta expansión, las hordas mongolas conquistaron importantes reinos de Asia, como el Imperio Jin del norte de China (1211-1216), el Imperio tanguta, el Kanato de Kara-Kitai, el Imperio corasmio o la dinastía Song en el sur de China.",
         timeAlive: "1206 a 18 de agosto de 1227",
         title: "Emperador Mongol",
         image: "/images/image_static/kan.jpeg"

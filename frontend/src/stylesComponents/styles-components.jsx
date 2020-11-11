@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 import styled from 'styled-components';
 /**From button theme */
@@ -106,7 +106,7 @@ export const MsgRegister = styled('span')`
 
 export const FooterS = styled("footer")`
   width: 100%;
-  color: #fff;
+  color: #000;
   height: 70px;
   text-align: center;
   font-weight: bold;
@@ -246,5 +246,29 @@ export const CardHistory = styled('li')`
 
 
 
+export const ButtonCheck = styled('button')`
+    background-color: ${props => props.bg};
+    border: 1px solid ${props => props.color !== "" ? props.color : "#000"};
+    padding: 15px 40px;
+    border-radius: 5px;
+    color:gray;
+    font-size: 1rem;
+    outline:none;
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    &:active {
+        animation: JumpButton linear forwards 200ms;
+    }
+
+    @keyframes JumpButton {
+        to {
+            transform: scale(1);
+        }
+        from {
+            transform: scale(1.2);
+        }
+    }
+`;
 
 

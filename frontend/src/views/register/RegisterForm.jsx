@@ -9,7 +9,7 @@ import { MsgRegister } from '../../stylesComponents/styles-components'
 export const FormRegister = () => {
     const [state, setState] = useState(false);
     const { data, setUser } = useFetch(API.register);
-    let { value } = data;
+    let { msg, value } = data;
 
     console.log(data);
     const HandleSubmit = (evt) => {
@@ -71,8 +71,17 @@ export const FormRegister = () => {
                     <input type="submit" value="Registrar" />
                 </div>
                 <div className="messages_register">
-                    {value ? <MsgRegister>Registrado</MsgRegister> : null}
-                    {state ? <MsgRegister className="span_check" error='#eb0f3aff'>Campos vacios</MsgRegister> : null}
+                    {msg === "usuario registrado" ?
+                        <MsgRegister error='#eb0f3aff'>{msg}</MsgRegister> :
+                        null}
+                    {value === true ?
+                        <MsgRegister>Registrado</MsgRegister> :
+                        null}
+                    {state ?
+                        <MsgRegister
+                            className="span_check"
+                            error='#eb0f3aff'>Campos vacios</MsgRegister> :
+                        null}
                 </div>
             </form>
         </>

@@ -2,16 +2,19 @@ const DBModel = require('../model/model.user');
 const path = require('path');
 
 
-const db_path = (__dirname.replace('/controllers', '') + '/db/Users.sqlite');
+const db_path = (path.dirname(__dirname) + '/db/Users.sqlite');
 let DB = new DBModel(db_path);
-function Add(args) {
-    let sql = `INSERT INTO Users(title,type,history,created_at) VALUES (?, ?, ?, ?)`;
+function Add({ name, month, day, year, history, url }) {
+    return new Promise((resolve, reject) => {
+        let sql = `INSERT INTO Users(title,history,date,url) VALUES (?, ?, ?, ?)    `;
+        DB.AddDataByDataBase(sql, [name, history, `${day}/${month}/${year}`, `${url}`]).then(_ => {
+            resolve(_)
+        }).catch(_error => {
 
-    let { name, age, month, day, history, image_url } = args;
+            reject(_error)
+        })
 
-    return DB.AddDataByDataBase(sql, [title, type, history, date]);
+    })
+
 }
-
-module.exports = {
-    Add
-}
+module.exports = Add;

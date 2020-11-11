@@ -14,6 +14,10 @@ export function FakeToken(count) {
             combine += combineChar[passwordRandom];
         }
         setSymbol(combine);
+
+        //return () => {
+        //     setSymbol(null);
+        //  }
     }, [count])
 
     return symbol;

@@ -1,34 +1,31 @@
 import React from 'react';
-import { Header } from './Header';
 import { Switch, Route } from 'react-router-dom';
+
+
+import { Header } from './Header';
 import { Footer } from './Footer';
 import { Add } from '../components/AddUser/AddUser';
-import { Histroy } from '../components/History/History';
+import { History } from '../components/History/History';
 import { Users } from '../components/User/User';
-import { useTheme } from '../context/useContextTheme';
+import { Edit } from '../components/Edit/EditHistory';
 
 
 
 export const Home = () => {
 
-    let ThemeConsumer = useTheme();
+
 
 
     return <>
-        <Header styleContext={ThemeConsumer} />
-        <main className='main_container' style={{ ...ThemeConsumer }}>
+        <Header />
+        <main className='main_container'>
             <Switch>
-                <Route exact path="/system/">
-                    <Users />
-                </Route>
-                <Route exact path='/system/history'>
-                    <Histroy />
-                </Route>
-                <Route exact path='/system/add'>
-                    <Add />
-                </Route>
+                <Route exact path="/system" component={Users} />
+                <Route exact path='/system/history' component={History} />
+                <Route exact path='/system/add' component={Add} />
+                <Route exact path='/system/update/:id' component={Edit} />
             </Switch>
         </main>
-        <Footer styleContext={ThemeConsumer} />
+        <Footer />
     </>
 }

@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { useParams, Link } from 'react-router-dom';
 import API from '../../api/index';
-import { useFetch } from '../../hooks/useFetch';
-import { Msg } from '../../stylesComponents/styles-components';
+import { usePut } from '../../hooks/usePut';
+import { Msg } from "../../stylesComponents/styles-components";
 
 
-export const Add = function () {
+
+
+export const Edit = function () {
+
+    const [massages, setMsg] = useState(false);
     const [loading, setLoading] = useState(false);
 
 
-    const { data, setUser } = useFetch(API.add);
+    const { id } = useParams();
+
 
 
 
@@ -17,24 +23,20 @@ export const Add = function () {
     const [day, setDay] = useState('');
     const [year, setYear] = useState('');
     const [month, setMonth] = useState('');
-
     const [history, setHistory] = useState('');
     const [url, setUrl] = useState('');
+
+    const [msg, setState] = usePut(API.update, id)
+
+
     const handlePrevent = function (ev) {
 
-
-
         ev.preventDefault();
+        setLoading(!loading);
 
 
-
-
-        if (name !== '' && day !== '' && month !== '' && year !== '' && history !== ''
-            && url !== '') {
-
-
-
-            setUser({
+        if (name && day && month && year && history && url) {
+            setState({
                 name: name,
                 day: day,
                 month: month,
@@ -42,11 +44,14 @@ export const Add = function () {
                 history: history,
                 url: url
             });
+            setMsg(false);
+            ev.target.reset();
+        } else {
+            setMsg(true);
         }
 
 
-        setLoading(!loading);
-        ev.target.reset();
+
 
     };
 
@@ -58,23 +63,39 @@ export const Add = function () {
     return (
         <>
             <Helmet>
-                <title>Añadir historia | Add History</title>
+                <title>Actualizar historia | Update History</title>
                 <meta name="author" content="RomeoDev" />
                 <meta
                     name="description"
-                    content="Añadir usuarios para llenar las historia y verificar si la historia es hermosa o  una mierda"
+                    content="Update history users"
                 />
                 <meta
                     name="keywords"
-                    content="ReactJS, 
-                             SQLite, 
-                             NodeJS, 
-                             CRUD, 
-                             Google Chrome"
+                    content="ReactJS, SQLite, NodeJS, CRUD, Google Chrome"
                 />
             </Helmet>
             <section className="section_add--content">
-                <form onSubmit={handlePrevent} method="POST" className='form_add'>
+                <Link to='/system/history'
+                    style={{
+                        border: "1px solid #000",
+                        padding: "10px 50px",
+                        position: "fixed",
+                        top: 60,
+                        left: 0,
+                        zIndex: 1,
+                        textDecoration: 'none',
+                        fontSize: '1.2rem',
+                        color: '#fff',
+                        backgroundColor: '#000',
+                        display: 'flex',
+                        alignItems: "center ",
+                        gap: "10px",
+                        justifyContent: 'center'
+                    }}>
+                    <div>{'Back'}</div>
+                    <img src='/icons/back.png' width='20' alt='back' />
+                </Link>
+                <form onSubmit={handlePrevent} className='form_add'>
                     <div className="form_fields">
                         <label htmlFor='name'>
                             Name the person
@@ -83,16 +104,18 @@ export const Add = function () {
                             name="name"
                             type="text"
                             id='name'
-                            onChange={ev => setName(ev.target.value)}
                             autoComplete="off"
-                        />
-
+                            onChange={ev => setName(ev.target.value)} />
                     </div>
                     <div className="form_fields">
                         <h5 className='date_title'> Date </h5>
                         <label htmlFor='day'>
                             Day
-                            <input type="text" id='day' name="day" onChange={ev => setDay(ev.target.value)} />
+                            <input
+                                type="text"
+                                id='day'
+                                name="day"
+                                onChange={ev => setDay(ev.target.value)} />
                         </label>
 
                         <label htmlFor='month'>
@@ -102,7 +125,6 @@ export const Add = function () {
                                 id="month"
                                 name="month"
                                 onChange={ev => setMonth(ev.target.value)}>
-                                <option>Select Month</option>
                                 <option value="1">January</option>
                                 <option value="2">February</option>
                                 <option value="3">March</option>
@@ -136,8 +158,9 @@ export const Add = function () {
                             id='history'
                             name="history"
                             placeholder="History..."
-                            onChange={ev => setHistory(ev.target.value)}
+
                             autoComplete="false"
+                            onChange={ev => setHistory(ev.target.value)}
                             maxLength={maxLengthLetters}
                         ></textarea>
 
@@ -149,6 +172,7 @@ export const Add = function () {
                         <input
                             type='text'
                             id='url'
+
                             onChange={ev => setUrl(ev.target.value)}
                             name='url' />
 
@@ -156,9 +180,9 @@ export const Add = function () {
                     <div className="form_fields">
                         <input type="submit" value="Add" />
                     </div>
+                    {massages ? <Msg type='0'>No puede dejar los campos vacios para la actualizacion</Msg> : null}
+                    {msg.msg ? <Msg type='1'>History update is success</Msg> : null}
                 </form>
-                {data.value === true ? <Msg>History add success</Msg> : null}
-
             </section>
         </>
     );

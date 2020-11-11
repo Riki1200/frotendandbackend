@@ -12,7 +12,7 @@
    viewBox="0 0 338.66666 270.93334"
    version="1.1"
    id="svg8"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
    sodipodi:docname="background.svg">
   <defs
      id="defs2" />
@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.24748737"
-     inkscape:cx="810.06285"
-     inkscape:cy="566.3831"
+     inkscape:zoom="0.35"
+     inkscape:cx="647.73334"
+     inkscape:cy="663.81217"
      inkscape:document-units="mm"
      inkscape:current-layer="g20"
      inkscape:document-rotation="0"
@@ -35,7 +35,8 @@
      inkscape:window-height="716"
      inkscape:window-x="0"
      inkscape:window-y="27"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:snap-global="false" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -57,7 +58,7 @@
        transform="translate(1.2723034,0.16115452)"
        style="stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none">
       <rect
-         style="fill:#002255;fill-rule:evenodd;stroke:#7e7e7e;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+         style="fill:#333333;fill-rule:evenodd;stroke:#7e7e7e;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
          id="rect12"
          width="347.07715"
          height="274.57751"
@@ -66,7 +67,7 @@
          ry="0.026368342" />
       <path
          style="fill:#1a1a1a;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 344.43878,273.65692 V -0.92060155 c 0,0 -2.38425,0.0747922 -3.39346,1.47730382 C 331.74732,13.478262 257.39702,112.49262 188.41448,61.064503 173.65106,50.058019 29.964937,73.499608 132.49954,171.19618 203.60016,238.94196 -2.413398,273.70122 -2.413398,273.70122 Z"
+         d="M 344.43878,273.65692 V -0.92060155 c 0,0 -2.38425,0.0747922 -3.39346,1.47730382 C 331.74732,13.478262 232.45074,69.630116 201.29188,47.633382 135.03981,0.8624361 99.896489,97.055595 84.345733,124.22027 60.322467,166.18506 -2.413398,273.70122 -2.413398,273.70122 Z"
          id="path16"
          sodipodi:nodetypes="ccssscc" />
     </g>

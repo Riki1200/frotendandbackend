@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 
 export function useFetch(url) {
-    const [data, setData] = useState({ value: null });
+    const [data, setData] = useState({ msg: '', value: false });
     const [user, setUser] = useState({})
+
+
+
+
     useEffect(() => {
         const getHttp = async () => {
             const options = {
@@ -16,10 +20,10 @@ export function useFetch(url) {
             const api = await fetch(url, options);
             return await api.json();
         };
+
         getHttp().then(response => {
-            console.log(response)
-            setData({ value: response.value });
-        })
+            setData({ ...response });
+        });
     }, [user, setUser, url])
 
 

@@ -22,6 +22,7 @@
   --btn-primary: hsl(130, 62%, 42%);
   --btn-secundary: hsl(221, 68%, 62%);
   --transparent-color: hsl(180, 3%, 94%, 0.2);
+  --bgScale: rgba(0, 0, 0, 0.507);
 }
 
 img {
@@ -60,7 +61,7 @@ body {
   justify-items: center;
   width: 100%;
   border-bottom: 1px solid #000;
-  background-color: var(--bg-secundary);
+
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
@@ -76,7 +77,7 @@ body {
   flex-shrink: 5;
 }
 .container .sub_container .header_content .title {
-  color: var(--color-primary);
+  color: #000;
   font-family: "Fira code", "Courier New", Courier, monospace;
   font-weight: 200;
   border-bottom: 1px solid var(--color-primary);
@@ -103,25 +104,21 @@ body {
 }
 .container .sub_container .header_content .logout_content .button_logout {
   font-weight: 100;
-  background-color: var(--color-secundary);
+
   border: none;
   border-radius: 3px;
   font-size: 0.9rem;
-  color: var(--color-primary);
+  color: #000;
   cursor: pointer;
   padding: 10px 10px;
-  transition: background-color, color 200ms linear, 200ms linear;
+  background-color: transparent;
+
   outline: none;
   user-select: all;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
-}
-
-.container .sub_container .header_content .logout_content .button_logout:hover {
-  color: hsla(0, 0%, 83%, 0.847);
-  background-color: hsla(0, 0%, 83%, 0.39);
 }
 
 .container
@@ -174,17 +171,186 @@ body {
   .nav__list--content
   .li__item--nav
   .nav_link--active {
-  background-color: #000;
+  background-color: rgb(7, 24, 44);
   color: #fff !important;
 }
 /* Container */
 .container .sub_container .main_container {
   padding: 1px 10px;
   display: flex;
-  justify-content: space-around;
-
-  padding-top: 30px;
+  justify-content: center;
+  align-items: center;
 }
+
+.container .sub_container .main_container .content_history {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: baseline;
+  height: 100%;
+  padding: 3rem 20px;
+  position: relative;
+}
+
+.container .sub_container .main_container .content_history .history_list {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  flex-flow: row wrap;
+}
+
+.container
+  .sub_container
+  .main_container
+  .content_history
+  .history_list
+  .list_history {
+  width: 100%;
+  border: 1px solid rgb(90, 90, 90);
+  border-radius: 7px;
+  position: relative;
+  padding: 10px 3ch;
+}
+
+.container
+  .sub_container
+  .main_container
+  .content_history
+  .history_list
+  .list_history
+  .link_history {
+  text-decoration: none;
+  color: #000;
+  outline: none;
+}
+
+.container
+  .sub_container
+  .main_container
+  .content_history
+  .history_list
+  .list_history
+  .link_history
+  .name_person {
+  font-size: 1.9rem;
+  font-weight: Sansita, sans-serif;
+  font-weight: 100;
+}
+
+.container
+  .sub_container
+  .main_container
+  .content_history
+  .history_list
+  .list_history
+  .link_history
+  .history {
+  font-size: 3ch;
+  border-bottom: 10px solid #000;
+  margin-bottom: 10px;
+}
+
+.container
+  .sub_container
+  .main_container
+  .content_history
+  .history_list
+  .list_history
+  .button_setting {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 20px;
+  margin-right: 20px;
+  display: flex;
+  gap: 38px;
+}
+
+.container
+  .sub_container
+  .main_container
+  .content_history
+  .history_list
+  .list_history
+  .button_setting
+  .update_button {
+  background-image: url("/icons/edit.png");
+  background-size: contain;
+  padding: 15px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.container
+  .sub_container
+  .main_container
+  .content_history
+  .history_list
+  .list_history
+  .button_setting
+  .deleted_button {
+  background-image: url("/icons/barbage.png");
+  background-size: contain;
+  padding: 15px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+}
+
+.container
+  .sub_container
+  .main_container
+  .content_history
+  .history_list
+  .list_history
+  .button_setting
+  .deleted_button::after,
+.update_button::after {
+  transition: content linear 200ms;
+  position: absolute;
+}
+
+.container
+  .sub_container
+  .main_container
+  .content_history
+  .history_list
+  .list_history
+  .button_setting
+  .deleted_button:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  font-size: 1.2rem;
+  left: 50px;
+  top: 35px;
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.container
+  .sub_container
+  .main_container
+  .content_history
+  .history_list
+  .list_history
+  .button_setting
+  .update_button:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  font-size: 1.2rem;
+  left: -25px;
+  top: 35px;
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border-radius: 7px;
+}
+
 .container .sub_container .main_container .content--user {
   width: 100%;
   display: flex;
@@ -207,6 +373,391 @@ body {
 }
 .container .sub_container .main_container .content--user .bg--content {
   order: 1;
+}
+
+.container .sub_container .main_container .section_add--content {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+.container .sub_container .main_container .section_add--content .form_add {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px 2ch;
+  gap: 30px;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 15px;
+  position: relative;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(2) {
+  align-items: center;
+  padding-bottom: 20px;
+  justify-content: baseline;
+  gap: 10px;
+  width: 100%;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(2)
+  label:nth-child(1n) {
+  font-size: 2rem;
+  font-weight: 100;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(2)
+  input[name="year"] {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 0.1px solid rgba(0, 0, 0, 0.212);
+  outline: none;
+  text-align: center;
+  font-size: 1.2rem;
+  transition: border-bottom linear 200ms;
+  font-family: Sansita, sans-serif;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(2)
+  input[name="year"]:focus {
+  border-bottom: 0.1px solid rgb(0, 0, 0);
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields
+  label {
+  text-align: center;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(2)
+  input[name="month"] {
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(1)
+  input {
+  width: 100%;
+  font-size: 1.8rem;
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 0.01px solid rgba(0, 0, 0, 0.288);
+  font-weight: 100;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 4px;
+  font-family: Sansita, sans-serif;
+  transition: border-bottom linear 200ms;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(1)
+  input:focus {
+  border-bottom: 1px solid #000;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(2)
+  label {
+  display: flex;
+  gap: 18px;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(2)
+  label
+  #month {
+  width: 18.9em;
+
+  flex-grow: 1;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.185);
+  text-align: center;
+  background-color: transparent;
+  outline: none;
+  text-align-last: center;
+  scroll-behavior: smooth;
+
+  transition: border-bottom linear 200ms;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(2)
+  label
+  #month:focus {
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(1)
+  label {
+  font-size: 3rem;
+  font-family: Abril, sans-serif;
+  font-weight: 200;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(2)
+  input[name="day"] {
+  border: none;
+  outline: none;
+  border-bottom: 0.1px solid rgba(0, 0, 0, 0.274);
+  width: 100%;
+  font-size: 1.2rem;
+  text-align: center;
+  font-family: Sansita, sans-serif;
+  transition: border-bottom linear 200ms;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(2)
+  input[name="day"]:focus {
+  border-bottom: 0.1px solid rgb(0, 0, 0);
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(4)
+  label {
+  font-size: 3rem;
+  font-family: Abril;
+  font-weight: 200;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(4)
+  input[type="text"] {
+  width: 100%;
+  font-size: 2rem;
+  border: none;
+  outline: none;
+  font-family: Sansita, sans-serif;
+  border-bottom: 0.1px solid rgba(0, 0, 0, 0.274);
+  padding-bottom: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: border-bottom linear 200ms;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(4)
+  input[type="url"]:focus {
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.925);
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(3)
+  label {
+  font-size: 3rem;
+  font-family: Abril;
+  font-weight: 200;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(3)
+  textarea {
+  resize: none;
+  width: 80vw;
+  height: 30ch;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  border: 0.1px solid rgba(126, 122, 122, 0.212);
+  position: relative;
+  outline: none;
+  font-size: 1.5rem;
+  transition: border linear 200ms;
+  font-family: Sansita, sans-serif;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(3)
+  textarea:focus {
+  border: 1px solid rgb(3, 0, 0);
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(3)
+  .len_text {
+  position: absolute;
+  line-height: 20px;
+  background-color: rgba(0, 0, 0, 0.144);
+  width: 50px;
+  text-align: center;
+  height: 20px;
+  top: 70px;
+  z-index: 9;
+  right: 0;
+  color: #fff;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(2)
+  .date_title {
+  align-self: center;
+  flex-grow: 1;
+  flex-basis: 100%;
+  text-align: center;
+  font-size: 3rem;
+  font-family: Abril;
+  font-weight: 200;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(5) {
+  width: 100%;
+}
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(5)
+  input[type="submit"] {
+  width: 10em;
+  padding: 10px 30px;
+  font-weight: 100;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 0.1px solid rgba(0, 0, 0, 0.404);
+  outline: none;
+  transition: transform linear 100ms;
+}
+
+.container
+  .sub_container
+  .main_container
+  .section_add--content
+  .form_add
+  .form_fields:nth-child(5)
+  input[type="submit"]:active {
+  transform: scale(1.1);
 }
 
 .container .sub_container .footer_content {
@@ -247,15 +798,8 @@ body {
   display: none;
 }
 
-.themeBlueDark {
-  transition: background-color, color linear 180ms, linear 200ms;
-  color: #fff;
-  background-color: #000;
-}
-.themeBlueLight {
-  transition: background-color, color linear 180ms, linear 200ms;
-  color: #000;
-  background-color: #fff;
+.button_closed {
+  display: none;
 }
 
 @media (max-width: 968px) {
@@ -264,7 +808,7 @@ body {
     flex-direction: column;
     flex-wrap: nowrap;
     top: 0;
-    width: 300px;
+    width: 250px;
     height: 100vh;
     background-color: #08060a;
     right: -300px;
@@ -315,7 +859,8 @@ body {
   .container .sub_container .header_content .menu_push {
     display: flex;
     margin-right: 50px;
-    z-index: 99999;
+
+    object-fit: fill;
   }
   .container .sub_container .header_content .nav_responsive.nav__content--nav {
     display: flex;
@@ -324,9 +869,9 @@ body {
     justify-content: center;
     right: 0;
     top: 0;
-    width: 300px;
+    width: 100vw;
     height: 100vh;
-    background-color: #fff;
+
     flex-direction: column;
     z-index: 99;
     transition: all linear 200ms;
@@ -361,5 +906,31 @@ body {
   }
   .container .sub_container .header_content .header_title {
     display: none;
+    --v: #000;
+  }
+
+  .button_closed {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 20px 30px;
+    background-color: transparent;
+    font-size: 3rem;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-weight: 100;
+    transition: transform linear 300ms;
+  }
+
+  .button_closed:hover {
+    transform: rotate(360deg) scale(1.2);
+  }
+}
+
+@media (max-width: 300px) {
+  .container .sub_container .header_content .menu_push img {
+    --v: #fff;
   }
 }

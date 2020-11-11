@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const middleware = require('./middleware/middleware.status.js');
-let https = require('https');
+
 //Routes
-const { addrouter, addUser } = require('./routes/index.js');
+const { addrouter, addUser, getData, deleteUser, updateRouter } = require('./routes/index.js');
 
 //
 const app = express();
@@ -15,8 +15,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Use endpoints
+app.use(getData);
 app.use(addUser)
 app.use(addrouter)
+app.use(deleteUser);
+app.use(updateRouter);
+
 //Middleware
 app.use(middleware);
 

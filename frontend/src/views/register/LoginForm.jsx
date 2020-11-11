@@ -18,20 +18,42 @@ export const FormLogin = () => {
     const [setStorage] = useLocalStorage(FakeToken(10));
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [valid, setValid] = useState(false);
 
 
-    const { value } = data;
-
+    const { msg } = data;
     const LoginForm = (ev) => {
         ev.preventDefault();
+
+
         if (email && password) {
             setHidden(true);
-            setTimeout(() => { setHidden(false); }, 1500)
-            // if (value) setStorage(value);
+
+            //  if (value) ;
             setLogin(false);
-            setUser({ email: email, password: password });
+
+            setUser({
+                email,
+                password
+            });
+
+
+
+
+
+
             setPassword('');
             setEmail('');
+
+            if (data.value) {
+                setValid(true);
+            }
+            setTimeout(() => {
+                setHidden(false);
+            }, 1000)
+
+
+
         } else {
             setLogin(true);
             setStorage(false);
@@ -39,17 +61,17 @@ export const FormLogin = () => {
             setTimeout(() => setLogin(false), 2200);
         }
 
-    }
-    useEffect(() => {
-        setInterval(() => {
-            if (value === true) {
-                setStorage(value);
-                window.location.reload();
-            }
-        }, 2500);
 
-    });
-    console.log(data)
+
+    }
+
+
+
+
+    useEffect(() => {
+        setStorage(data.value);
+    }, [setStorage, valid, data]);
+
     if (window.localStorage.getItem('akt-login') !== null) {
         return <Redirect to='/system' />
     } else
@@ -62,7 +84,7 @@ export const FormLogin = () => {
                 </ModalAll>
                 :
                 null}
-            <form className='form_login' method="POST">
+            <form className='form_login' method="POST" onSubmit={LoginForm}>
                 <div className='title_form form_login-fields'>
                     <h2>Iniciar session</h2>
                 </div>
@@ -77,10 +99,17 @@ export const FormLogin = () => {
                     {login === true ? <Msg type='0'>Campos vacios</Msg> : null}
                 </div>
                 <div className='form_login-fields'>
-                    <button type='submit' onClick={(ev) => LoginForm(ev)}> Sign In<LogoutIcon src='/icons/logout.svg' alt='icon' /></button>
+                    <button type='submit'>
+                        Sign In<LogoutIcon src='/icons/logout.svg' alt='icon' />
+                    </button>
                 </div>
-                {data.value === false ? <Msg type={'0'}>Datos incorrectos</Msg> : null}
-                {data.value === true ? <Msg width="300" type={'1'}>Usuario valido, espero un momento para iniciar session</Msg> : null}
+                {msg === "Wrong user" ?
+                    <Msg type={'0'}>
+                        Datos incorrectos
+                    </Msg>
+                    :
+                    null
+                }
             </form>
 
         </>

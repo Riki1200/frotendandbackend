@@ -1,11 +1,12 @@
 const DBModel = require('../model/model.user')
+const path = require('path');
 
 
 
 
 
 
-const db_path = (__dirname.replace('/controllers', '') + '/db/Users.sqlite');
+const db_path = (path.dirname(__dirname) + '/db/Users.sqlite');
 
 let DB = new DBModel(db_path);
 

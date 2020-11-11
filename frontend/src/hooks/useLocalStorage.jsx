@@ -16,7 +16,7 @@ export const useLocalStorage = (item) => {
 
         }
         LocalStorage();
-        return function () {
+        return () => {
             let getTimer = window.localStorage.key(0);
             let getStore = window.localStorage.getItem(getTimer)
             if (getStore) {
@@ -27,7 +27,7 @@ export const useLocalStorage = (item) => {
             }
 
         }
-    })
+    }, [registerUser, item])
 
     return [setStorage];
 

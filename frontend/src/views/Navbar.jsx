@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { NavLink } from 'react-router-dom';
-import { useTheme } from '../context/useContextTheme';
+import { buttonContext } from './Header'
+
+
 
 export const Navbar = ({ classStyle }) => {
-    let themeProvider = useTheme();
+
+    const UpdateContext = useContext(buttonContext);
 
     const [t, setT] = useState(false);
 
 
-
+    const handleClick = (_ev) => {
+        UpdateContext(f => !f);
+    }
 
     useEffect(() => {
         const Load = () => {
@@ -32,19 +37,18 @@ export const Navbar = ({ classStyle }) => {
     return <nav className={`nav__content--nav  ${classStyle}`}>
         <ol className='nav__list--content'>
             <li className='li__item--nav'>
-                <NavLink exact to='/system' style={{ color: t ? "#fff" : themeProvider.color }} className='nav__link' activeClassName='nav_link--active'
+                <NavLink exact to='/system' className='nav__link' activeClassName='nav_link--active'
                 >Home</NavLink>
             </li>
 
             <li className='li__item--nav'>
                 <NavLink to='/system/history' className='nav__link' activeClassName='nav_link--active'
-                    style={{ color: t ? "#fff" : themeProvider.color }} >History</NavLink>
+                >History</NavLink>
             </li>
             <li className='li__item--nav'>
-                <NavLink to='/system/add' className='nav__link' activeClassName='nav_link--active' style={{
-                    color: t ? "#fff" : themeProvider.color
-                }} >Add History</NavLink>
+                <NavLink to='/system/add' className='nav__link' activeClassName='nav_link--active' >Add History</NavLink>
             </li>
+            <button className='button_closed' onClick={handleClick}>X</button>
         </ol>
     </nav>
 };
