@@ -21,17 +21,11 @@ export const Users = function () {
             </div>
 
             <section className='bg--content'>
-                <CardContent
-                    className='history_person'
-
-
-                >
+                <CardContent className='history_person'>
                     {HistoryUser.map(({ name, history, timeAlive, title, image }, index) => (
-                        <CardHistory
-                            key={index}
+                        <CardHistory key={index}
                             className='li_item--history'
-                            color="#000"
-                        >
+                            color="#000">
                             <div className='card_content'>
                                 <h2 className='name_person'>{name}</h2>
                                 <img src={image} alt={image} />

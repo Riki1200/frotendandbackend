@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './Navbar';
 import { LogoutUser } from './register/Logout';
 import { Redirect } from 'react-router-dom'
@@ -19,6 +19,9 @@ export const Header = function () {
         setVali(r => !r);
     }
 
+    useEffect(() => {
+
+    }, [vali])
     const [state, setState] = useState(false);
     const loadStorage = function () {
         if (window.localStorage.key(0)) {
@@ -33,10 +36,9 @@ export const Header = function () {
                 <h2 className='title'>History</h2>
             </div>
             <button className="menu_push" style={{
-                backgroundColor:
-                    "transparent", outline:
-                    "none", border:
-                    "none"
+                backgroundColor: "transparent",
+                outline: "none",
+                border: "none"
             }} onClick={AddClass}>
                 <img src='/icons/nav.png' alt='nav' style={{ maxWidth: "60px" }} />
             </button>

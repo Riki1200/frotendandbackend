@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import API from '../../api/index';
 import { useUsers } from '../../hooks/useGet';
@@ -13,44 +13,65 @@ import { ModalView } from '../../views/ModalConfirm';
 
 export const History = () => {
 
+
+
+
+    const refElement = useRef()
+
+
+
+    useEffect(() => {
+        console.log(refElement)
+    }, [])
+
+
     const [ids, setId] = useState(0);
     const [check, setCheck] = useState(false);
-
+    //For Open Modal
     const [modal, setModal] = useState(false);
-    const [confim, setConfirm] = useState(false);
 
+
+    /**
+     * Update history
+     */
     const [updateState, setUpdate] = useState(false);
 
 
     const [captureId, setCapture] = useState(null);
-    const handleDeleted = (ev, id) => {
-        ev.preventDefault();
 
-        if (modal) {
-            setCheck(true);
-            setId(r => r = id);
-            setConfirm(true);
-        }
 
-    }
+    const [historys, setHistory] = useState([]);
+
+
+
 
     const [idUpdate, setIDUpdate] = useState(null);
 
 
 
-    useEffect(() => {
-        if (confim === true) {
-            setInterval(() => {
-                window.location.reload();
-            }, 900);
-        }
-    })
-
 
     const [del] = useFetchData(API.delete, ids, check);
 
+
+
+
+
     const { data } = useUsers(API.get);
-    let rows = data;
+
+
+
+
+
+
+    useEffect(() => {
+
+
+        setHistory(data);
+
+
+
+    }, [data])
+
 
 
 
@@ -61,12 +82,33 @@ export const History = () => {
         setUpdate(true);
     }
 
-    let { msg } = del;
+    const handleDeleted = (ev, id) => {
+        ev.preventDefault();
 
-    if (updateState) {
-        return <Redirect to={'/system/update/' + idUpdate} />
+
+        console.log(id)
+        let filterHistories = historys.filter(({ rowid }) => rowid !== id);
+
+
+        setHistory(filterHistories)
+
+
+        if (modal) {
+            setCheck(true);
+            setId(r => r = id);
+
+        }
+        console.log(historys)
     }
 
+
+
+
+
+
+    let { msg } = del;
+
+    if (updateState) return <Redirect to={`/system/update/${idUpdate}`} />
 
     return <>
         <Helmet>
@@ -75,7 +117,7 @@ export const History = () => {
         <div className='content_history'>
             {
                 modal ? <ModalView
-                    massage={"¿Desea eliminar esta historia?"}
+                    massage={"Will do you deleted this history?"}
 
                     onClosed={(ev) => {
                         ev.stopPropagation();
@@ -85,20 +127,32 @@ export const History = () => {
                         if (validate) setModal(false)
                     }}
                 >
-                    <ButtonCheck onClick={(ev) => {
-                        setModal(false)
-                        handleDeleted(ev, captureId)
-                    }}> <img src='/icons/yes.png' alt='yes' /> Si  </ButtonCheck>
-                    <ButtonCheck onClick={() => {
-                        setModal(false)
-                    }}> <img src='/icons/closed.png' alt='closed' />  No   </ButtonCheck>
+                    <ButtonCheck
+                        bg="#ff3a3a"
+                        color='#fff'
+                        fc="#fff"
+                        onClick={(ev) => {
+                            setModal(false)
+                            handleDeleted(ev, captureId)
+                        }}>
+                        Si
+                    </ButtonCheck>
+                    <ButtonCheck
+                        bg="#44bb3b"
+                        color='#fff'
+                        fc="#fff"
+                        onClick={() => {
+                            setModal(false)
+                        }}>
+                        No
+                    </ButtonCheck>
                 </ModalView> : null
             }
-            {rows.length > 0 ?
+            {historys.length > 0 ?
                 <ol className='history_list'>{
-                    rows.map(({ rowid, title, date, history, url }, index) => (
+                    historys.map(({ _id, title, date, history, url }) => (
 
-                        <li className='list_history' key={index}>
+                        <li className='list_history' ref={refElement} key={_id}>
 
                             <div className='history_person'>
                                 <h1 className='name_person'>{title}</h1>
@@ -113,13 +167,13 @@ export const History = () => {
                                     className='update_button'
                                     data-tooltip='update'
                                     onClick={(ev) => {
-                                        HandleUpdated(ev, rowid)
+                                        HandleUpdated(ev, _id)
                                     }}
                                 ></button>
                                 <button
                                     className='deleted_button'
                                     onClick={() => {
-                                        setCapture(rowid)
+                                        setCapture(_id)
                                         setModal(true)
                                     }}
                                     data-tooltip='deleted'

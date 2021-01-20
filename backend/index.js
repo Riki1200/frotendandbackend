@@ -1,5 +1,5 @@
 const app = require('./app/app.js');
-const PORT = require('./app/config/port.js')
+const { PORT } = require('./app/config/port.js')
 
 const server = async () =>
     app.listen(PORT, () =>

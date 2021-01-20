@@ -6,10 +6,10 @@ import { HelmetProvider } from 'react-helmet-async'
 
 
 
-const App = () => (
+const App = ({ props }) => (
   <HelmetProvider>
     <Router>
-      <Container />
+      <Container  {...props} />
     </Router>
   </HelmetProvider>
 );

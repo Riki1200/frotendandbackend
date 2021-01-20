@@ -7,13 +7,8 @@ const addrouter = express.Router({ caseSensitive: true });
 addrouter.post('/api/add', function (req, res) {
 
     let { name, day, month, year, history, url } = req.body;
-
-    if (name !== undefined &&
-        day !== undefined
-        && month !== undefined
-        && year !== undefined
-        && history !== undefined
-        && url !== undefined) {
+    console.log(name, day, month, year, history, url)
+    if (name && day && month && year && history && url) {
 
         Add(req.body).then((_r) => {
             res.json({ ..._r });

@@ -15,6 +15,3 @@ export const ModalAll = ({ children }) => {
 
 }
 
-export const ModalUser = ({ children }) => {
-    return ReactDOM.createPortal(null, document.getElementById('modal-portal'))
-}
