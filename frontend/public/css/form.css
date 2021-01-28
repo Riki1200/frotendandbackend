@@ -6,18 +6,23 @@
   position: relative;
 }
 
+.container .sub_container {
+  background-image: url("/images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 120ch;
+}
 .container .sub_container .register_content {
   position: relative;
   width: 100%;
-  height: 50em;
+  height: 100%;
   display: grid;
   place-content: center;
   place-items: center;
   justify-items: center;
-  gap: 50px;
-  grid-template-rows: 500px 100px;
-  grid-template-columns: 100%;
-  background-image: url("/images/bg_splash.svg");
+
+  grid-template-rows: 1fr 100px;
+
   background-repeat: no-repeat;
   background-size: contain;
   background-clip: border-box;
@@ -25,14 +30,13 @@
 }
 
 .container .sub_container .register_content .main_login {
-  margin-top: 60px;
-  height: 500px;
+  height: 100ch;
   display: grid;
-  width: 100%;
+  width: 50ch;
   place-content: center;
   place-items: center;
   justify-items: start;
-  background-color: hsla(235, 77%, 14%, 0.733);
+  background-color: #272246;
   border-radius: 2px;
   grid-template-rows: 0.1fr 2fr;
   transition: all 0.2s linear;
@@ -45,14 +49,14 @@
 .container .sub_container .register_content .main_login .form_login {
   padding: 10px 20px;
   transition: all 0.2s linear;
-  height: 25ch;
+
   display: flex;
   flex-flow: column wrap;
   align-items: center;
   align-content: center;
   justify-content: space-between;
-  height: 100%;
-  animation: Apper forwards linear 0.2s;
+  height: 70ch;
+  animation: Apper forwards linear 200ms;
   grid-area: Login;
 }
 
@@ -212,10 +216,9 @@
 /*Register*/
 .container .sub_container .register_content .main_login .form_register {
   transition: all 0.2s linear;
-  height: 25ch;
-
-  height: 100%;
-  padding: 10px 20px;
+  margin-top: 10px;
+  height: 80ch;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -231,10 +234,12 @@
   .form_register
   .title_form {
   color: #fff;
-  font-size: 2rem;
-  font-weight: 100;
-  font-family: "Courier New", Courier, monospace;
+  font-size: 2.5rem;
+  text-align: center;
+  width: 100%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin-bottom: 10px;
+  border-bottom: 10px solid rgb(255, 255, 255);
 }
 
 .container
@@ -247,9 +252,99 @@
   width: 100%;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   position: relative;
+}
+
+.container .sub_container .register_content .main_login .form_register > #date {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .form_register--fields:nth-child(5)
+  .label_div-group {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 55px;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .form_register--fields:nth-child(5)
+  .date_div-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  gap: 20px;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .form_register--fields:nth-child(5)
+  .date_div-group
+  input {
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+  border-bottom: 1px solid #ffffff;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding-bottom: 5px;
+  appearance: none;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .form_register--fields:nth-child(5)
+  .label_div-group
+  .label_date {
+  position: relative;
+  top: 0;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .form_register--fields:nth-child(5)
+  label {
+  position: relative;
+}
+
+.container
+  .sub_container
+  .register_content
+  .main_login
+  .form_register
+  .form_register--fields:nth-child(5)
+  input {
+  width: 80px;
+  text-align: center;
 }
 
 .container
@@ -274,13 +369,13 @@
 .form_register--fields:nth-child(3) input,
 .form_register--fields:nth-child(4) input {
   background-color: transparent;
-  border-bottom: 1px solid rgb(152, 150, 241);
+  border-bottom: 1px solid rgb(240, 239, 253);
   border-top: none;
   border-left: none;
   border-right: none;
   outline: none;
   width: 250px;
-  padding-top: 20px;
+  padding-top: 15px;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
@@ -309,21 +404,11 @@
   .register_content
   .main_login
   .form_register
-  .form_register--fields:nth-child(5)
-  input {
-  margin-top: 15px;
-}
-
-.container
-  .sub_container
-  .register_content
-  .main_login
-  .form_register
   .form_register--fields:nth-child(2)
   input:focus,
 .form_register--fields:nth-child(3) input:focus,
 .form_register--fields:nth-child(4) input:focus {
-  border-bottom: 1px solid #61a9ec;
+  border-bottom: 1px solid #2c4964;
 }
 
 .container
@@ -342,10 +427,12 @@
 }
 
 @keyframes Apper {
-  to {
-    opacity: 1;
-  }
   from {
     opacity: 0.2;
+    filter: hue-rotate(90deg);
+  }
+  to {
+    opacity: 1;
+    filter: hue-rotate(90deg);
   }
 }

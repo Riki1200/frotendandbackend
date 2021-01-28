@@ -1,20 +1,51 @@
-const DBModel = require('../model/model.user')
-const path = require('path');
+
+const { DBModel, UserModel } = require('../model/model.user')
+
+const { encryptePass, descrytePass } = require('../utils/hash');
 
 
 
 
 
+let DB = new DBModel();
 
-const db_path = (path.dirname(__dirname) + '/db/Users.sqlite');
 
-let DB = new DBModel(db_path);
+console.log(DB.UsersModel)
+/**
+ * 
+ * @param {String} name
+ * @param {String} email
+ * @param {String} password
+ * @param {Object} birthdate
+ * @returns {Promise} RegisterUser []
+ */
 
-function AddUser({ name, email, password, date }) {
-    return new Promise((resolve, reject) => {
-        let query = `INSERT INTO User(name,email,password,date) VALUES (?,?,?,?);`;
-        DB.UserDataByDataBase(query, [name, email, password, date]).then((res) => {
-            resolve(res);
+function AddUser({ name, email, password, birthdate }) {
+    return new Promise(async (resolve, reject) => {
+
+
+        let hashePASS = encryptePass(password)
+
+        let UserRegister = {
+            username: name,
+            password: hashePASS,
+            email: email,
+            birthdate: birthdate
+        }
+        console.log(UserRegister)
+
+
+
+        DB.UserDataByDataBase(UserRegister).then(({ UsersModelRegister }) => {
+
+            UsersModelRegister.save().then(() => {
+
+                resolve({ msg: "User register success" });
+            }).catch(() => {
+
+                reject({ msg: "User exits" })
+            })
+
         }).catch((error) => {
             reject(error);
         })
@@ -24,12 +55,28 @@ function AddUser({ name, email, password, date }) {
 
 function LoginUser({ email, password }) {
     return new Promise((resolve, reject) => {
-        let sql = `SELECT name FROM User WHERE email = ? AND password = ?;`;
-        DB.QueryDataByDataBase(sql, [email, password]).then((res) => {
-            resolve(res);
-        }).catch(error => {
-            reject(error);
+        let regxEmail = new RegExp(email, "gi");
+        let r = password;
+        console.log(r)
+        UserModel.find({ email: regxEmail }, (err, user) => {
+
+            if (err) {
+                reject(err)
+            }
+            else {
+                let passwordHash = user[0]['password']
+                console.log(descrytePass(r, password), passwordHash)
+                if (descrytePass(r, passwordHash)) {
+                    console.log(user)
+                    resolve(user)
+                } else {
+                    reject({ msg: "passowrd is wrong" })
+                }
+
+            }
         })
+
+
     })
 
 }

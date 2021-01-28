@@ -28,7 +28,7 @@ export const UseThemeContext = ({ children }) => {
         }
         localStorage.setItem('theme', JSON.stringify(theme ? BlueLight : BlueDark))
 
-        if (localStorage.getItem('theme')) {
+        if (window.localStorage.getItem('theme')) {
             let localTheme = JSON.parse(localStorage.getItem('theme'))
             setLocal(localTheme);
         }

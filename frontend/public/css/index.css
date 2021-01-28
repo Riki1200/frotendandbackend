@@ -176,7 +176,7 @@ body {
 }
 /* Container */
 .container .sub_container .main_container {
-  padding: 1px 10px;
+  padding: 20px 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -376,6 +376,7 @@ body {
 }
 
 .container .sub_container .main_container .section_add--content {
+  position: relative;
   margin-top: 30px;
   margin-bottom: 15px;
   width: 100%;
@@ -869,7 +870,7 @@ body {
     justify-content: center;
     right: 0;
     top: 0;
-    width: 100vw;
+    width: 50vw;
     height: 100vh;
 
     flex-direction: column;

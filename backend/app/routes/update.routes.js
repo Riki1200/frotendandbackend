@@ -21,7 +21,7 @@ updateRouter.put('/api/update/:id', function (req, res) {
                 res.json(r)
             }).catch(e => {
                 res.status(202).json({ e });
-                console.log(e)
+
             })
 
 

@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 /**From button theme */
-export const BoxTheme = styled('div')`
+export const BoxTheme = styled('article')`
    
 
     background-color: ${props => props.bg};
@@ -90,9 +90,7 @@ export const LogoutIcon = styled('img')`
     width: 18px;
     filter: invert(100%);
 `;
-/**Register 
- * @Register
- * **/
+
 
 
 export const MsgRegister = styled('span')`
@@ -106,7 +104,7 @@ export const MsgRegister = styled('span')`
 
 export const FooterS = styled("footer")`
   width: 100%;
-  color: #000;
+  color: #fff;
   height: 70px;
   text-align: center;
   font-weight: bold;
@@ -135,7 +133,7 @@ export const Modal = styled('div')`
         display:none;
     }
 `;
-export const Children = styled('div')`
+export const Children = styled('section')`
     position:relative;
     width:100%;
     height:100vh;
@@ -247,11 +245,12 @@ export const CardHistory = styled('li')`
 
 
 export const ButtonCheck = styled('button')`
+    outline:none;
     background-color: ${props => props.bg};
-    border: 1px solid ${props => props.color !== "" ? props.color : "#000"};
+    border: 1px solid ${props => props.color !== "" ? props.color : ""};
     padding: 15px 40px;
     border-radius: 5px;
-    color:gray;
+    color:${props => props.fc ? props.fc : 'gray'};
     font-size: 1rem;
     outline:none;
     display:flex;

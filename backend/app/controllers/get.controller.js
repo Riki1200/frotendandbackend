@@ -1,28 +1,29 @@
-const DBModel = require('../model/model.user');
-const path = require('path');
+const { HistoyModelSchema } = require('../model/model.history');
 
 
-const db_path = (path.dirname(__dirname) + '/db/Users.sqlite');
-let DB = new DBModel(db_path);
+
 function GetHistory() {
     return new Promise((resolve, reject) => {
-        let sql = `SELECT (rowid),* FROM Users`;
-        DB.GetDataByDataBase(sql).then((value) => {
-            resolve(value);
-        }).catch((_error) => {
-            reject(_error);
-        })
+        HistoyModelSchema.ModelHistory().then(async ModelHistory => {
+            let data = await ModelHistory.find();
+            if (data.length > 0)
+                resolve(data)
+            else
+                reject({ msg: "Not match results found" })
+        }).catch(reject)
+
     })
 }
 
 function GetHistoryId(id) {
     return new Promise((resolve, reject) => {
-        let sql = 'SELECT * FROM Users where rowid = ?';
-        DB.GetDataByDataBase(sql, [id]).then((value) => {
-            resolve(value);
-        }).catch((_error) => {
-            reject(_error);
-        })
+
+        HistoyModelSchema.ModelHistory().then(async ModelPerId => {
+            ModelPerId.findById({ _id: id }, (err, dc) => {
+                if (err) reject(err)
+                resolve(dc);
+            })
+        }).catch(reject)
     })
 }
 
@@ -32,3 +33,6 @@ module.exports = {
     GetHistoryId,
     GetHistory
 };
+
+
+

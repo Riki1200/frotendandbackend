@@ -1,11 +1,11 @@
-const path = require('path');
-
-const DBModel = require('../model/model.user');
-
-const db_path = (path.dirname(__dirname) + '/db/Users.sqlite');
 
 
-const DB = new DBModel(db_path);
+const { DBModel } = require('../model/model.user');
+
+
+
+
+const DB = new DBModel();
 
 
 

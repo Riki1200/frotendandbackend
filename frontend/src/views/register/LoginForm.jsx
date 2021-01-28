@@ -10,7 +10,7 @@ import { Spinner, Msg, LogoutIcon } from '../../stylesComponents/styles-componen
 
 
 export const FormLogin = () => {
-    const { data, setUser } = useFetch(API.login);
+    const { data, setUser } = useFetch(API.login, 'login');
 
 
     const [login, setLogin] = useState(false);
@@ -48,9 +48,7 @@ export const FormLogin = () => {
             if (data.value) {
                 setValid(true);
             }
-            setTimeout(() => {
-                setHidden(false);
-            }, 1000)
+            setTimeout(() => setHidden(false), 1000)
 
 
 
@@ -61,7 +59,7 @@ export const FormLogin = () => {
             setTimeout(() => setLogin(false), 2200);
         }
 
-
+        console.log(data)
 
     }
 
@@ -103,7 +101,7 @@ export const FormLogin = () => {
                         Sign In<LogoutIcon src='/icons/logout.svg' alt='icon' />
                     </button>
                 </div>
-                {msg === "Wrong user" ?
+                {msg === "passowrd is wrong" ?
                     <Msg type={'0'}>
                         Datos incorrectos
                     </Msg>

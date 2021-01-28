@@ -20,9 +20,6 @@ export const Edit = function () {
 
 
     const [name, setName] = useState('');
-    const [day, setDay] = useState('');
-    const [year, setYear] = useState('');
-    const [month, setMonth] = useState('');
     const [history, setHistory] = useState('');
     const [url, setUrl] = useState('');
 
@@ -35,12 +32,9 @@ export const Edit = function () {
         setLoading(!loading);
 
 
-        if (name && day && month && year && history && url) {
+        if (name && history && url) {
             setState({
                 name: name,
-                day: day,
-                month: month,
-                year: year,
                 history: history,
                 url: url
             });
@@ -78,9 +72,10 @@ export const Edit = function () {
                 <Link to='/system/history'
                     style={{
                         border: "1px solid #000",
-                        padding: "10px 50px",
-                        position: "fixed",
-                        top: 60,
+                        padding: "10px 40px",
+                        position: "sticky",
+                        bottom: "120px",
+
                         left: 0,
                         zIndex: 1,
                         textDecoration: 'none',
@@ -107,48 +102,7 @@ export const Edit = function () {
                             autoComplete="off"
                             onChange={ev => setName(ev.target.value)} />
                     </div>
-                    <div className="form_fields">
-                        <h5 className='date_title'> Date </h5>
-                        <label htmlFor='day'>
-                            Day
-                            <input
-                                type="text"
-                                id='day'
-                                name="day"
-                                onChange={ev => setDay(ev.target.value)} />
-                        </label>
 
-                        <label htmlFor='month'>
-                            Month
-                             <select
-                                required
-                                id="month"
-                                name="month"
-                                onChange={ev => setMonth(ev.target.value)}>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        </label>
-                        <label htmlFor='age'>
-                            Year
-                            <input
-                                type="text"
-                                id='age'
-                                name="year"
-                                onChange={ev => setYear(ev.target.value)} />
-                        </label>
-
-                    </div>
                     <div className="form_fields">
                         <label htmlFor='history'  >
                             History
