@@ -69,7 +69,7 @@ class DBModel {
                 console.log("Connectes it's sucess")
             }).catch(error => {
                 let err = new Error(error)
-                console.error(err.message)
+                console.error(err)
             })
         })
 
@@ -83,8 +83,9 @@ class DBModel {
 
             try {
                 /**
-            * @type {Mongoose.Model} UsersModelRegister
-            */
+                 * Instance for model
+                * @type {Mongoose.Model} UsersModelRegister
+                */
                 const UsersModelRegister = new this.UsersModel({
                     username: username,
                     password: password,
@@ -103,43 +104,10 @@ class DBModel {
 
         });
     }
-    async QueryDataByDataBase({ username, password, email }) {
-        return await new Promise(async (resolve, reject) => {
 
-
-        });
-    }
-
-
-    async GetDataByDataBase(sql, data = []) {
-        return await new Promise(async (resolve, reject) => {
-
-        });
-    }
-
-
-
-
-    async AddDataByDataBase(sql, data = []) {
-        return await new Promise(async (resolve, reject) => {
-
-
-        })
-
-
-    }
-
-    async UpdateDataByDataBase(sql, data = []) {
-        return new Promise((resolve, reject) => {
-
-        })
-    }
-
-    DeletedDataByDataBase(sql, data = []) {
-        return new Promise((resolve, reject) => {
-
-        })
-    }
 }
 
-module.exports = { DBModel, UserModel: model('Users', UserSchema) };
+module.exports = {
+    DBModel,
+    UserModel: model('Users', UserSchema)
+};

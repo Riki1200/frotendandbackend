@@ -13,8 +13,12 @@ const AuthMiddleware = (req, res, next) => {
     const token = authHeader && authHeader.split(' ')[1]
     if (token === null) return res.sendStatus(401)
     jsonwebtoken.verify(token, process.env.TOKEN, (error, user) => {
-        if (error) return res.sendStatus(403)
+        if (error) {
+
+            return res.sendStatus(403).json(error)
+        }
         req.user = user;
+
         next();
     })
 }

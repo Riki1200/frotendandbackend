@@ -7,7 +7,7 @@ const middleware = require('./middleware/middleware.status.js');
  */
 const { addrouter, addUser, getData, deleteUser, updateRouter } = require('./routes/index.js');
 
-const authMiddleware = require('./middleware/auth.middleware');
+
 /***
  * Constant init express app
  * @function express()
@@ -19,7 +19,7 @@ const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-//app.use(authMiddleware);
+
 
 //Endpoints
 app.use(getData);

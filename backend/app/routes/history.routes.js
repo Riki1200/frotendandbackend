@@ -8,7 +8,7 @@ const getData = express.Router({ caseSensitive: true });
 
 
 getData.get('/api/get', function (_, res) {
-    GetHistory().then((_) => {
+    GetHistorqy().then((_) => {
         res.json(_);
     }).catch((_) => {
         res.status(402).json(..._);

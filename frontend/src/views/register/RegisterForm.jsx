@@ -9,7 +9,7 @@ import { MsgRegister } from '../../stylesComponents/styles-components'
 
 export const FormRegister = () => {
     const [state, setState] = useState(false);
-    const { data, setUser } = useFetch(API.register);
+    const { data, setUser } = useFetch(API.register, 'register');
 
 
     const [name, setName] = useState('')
@@ -19,6 +19,9 @@ export const FormRegister = () => {
     const [mon, setMon] = useState('')
     const [year, setYear] = useState('');
 
+    const [month, setMonth] = useState([])
+
+    const [YearState, setYearState] = useState([])
 
     let { msg, value } = data;
 
@@ -26,11 +29,12 @@ export const FormRegister = () => {
     const HandleSubmit = (evt) => {
         evt.preventDefault();
         let el = evt.target;
-        if (
-            !name &&
-            !password
-
-        ) {
+        if (name !== ""
+            && password !== ""
+            && email !== ""
+            && day !== ""
+            && month !== ""
+            && year !== "") {
 
             const validateEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/g
 
@@ -53,14 +57,9 @@ export const FormRegister = () => {
 
 
 
-    const [month, setMonth] = useState([])
-
-    const [YearState, setYearState] = useState([])
 
     useEffect(function () {
-        setTimeout(() => {
-            setState(false);
-        }, 2500);
+        setTimeout(() => setState(false), 2500);
 
 
         function* gen() {
@@ -106,10 +105,16 @@ export const FormRegister = () => {
                 </div>
                 <div className="form_register--fields">
                     <label htmlFor="id_n">Username</label>
-                    <input type="text" onChange={(v) => setName(v.value)} name="name" id="id_n" placeholder="" />
+                    <input
+                        type="text"
+                        onChange={(v) => setName(v.value)}
+                        name="name"
+                        id="id_n"
+                        placeholder="" />
                 </div>
                 <div className="form_register--fields">
-                    <label htmlFor="password_r">Password</label>
+                    <label
+                        htmlFor="password_r">Password</label>
                     <input
                         onChange={(v) => setPassword(v.value)}
                         type="password"
@@ -121,7 +126,12 @@ export const FormRegister = () => {
                 </div>
                 <div className="form_register--fields">
                     <label htmlFor="email_R">Email</label>
-                    <input type="email" onChange={(v) => setEmail(v.value)} name="email" id="email_r" placeholder="" />
+                    <input
+                        type="email"
+                        onChange={(v) => setEmail(v.value)}
+                        name="email"
+                        id="email_r"
+                        placeholder="" />
                 </div>
                 <div className="form_register--fields" id="date">
                     <h1 style={{ color: "#fff" }}>Date</h1>
@@ -132,7 +142,11 @@ export const FormRegister = () => {
                     </div>
                     <div className='date_div-group'>
                         <input type="text" onChange={(v) => setDay(v.value)} id='day' name='day' />
-                        <input list="months" onChange={(v) => setMon(v.value)} id='month' name='month' />
+                        <input
+                            list="months"
+                            onChange={(v) => setMon(v.value)}
+                            id='month'
+                            name='month' />
                         <datalist id="months">
                             {month.length > 0 ? month.map((value, index) => (
                                 <option value={value} key={index} > {value} </option>

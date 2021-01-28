@@ -1,16 +1,29 @@
 const express = require('express');
 const Add = require('../controllers/add.controller.js');
 
+
+/**
+ * Create endpoit for add router
+ * @type {express.IRouter}
+ */
+
 const addrouter = express.Router({ caseSensitive: true });
 
 
 addrouter.post('/api/add', function (req, res) {
 
-    let { name, day, month, year, history, url } = req.body;
-    console.log(name, day, month, year, history, url)
-    if (name && day && month && year && history && url) {
+    let { name, history, url } = req.body;
 
-        Add(req.body).then((_r) => {
+    if (name && history && url) {
+
+
+        let HistoryClient = {
+            name: name,
+            history: history,
+            url: url
+        }
+
+        Add(HistoryClient).then((_r) => {
             res.json({ ..._r });
         }).catch(err => {
             console.log(err)
