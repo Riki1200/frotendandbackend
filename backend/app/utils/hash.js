@@ -14,6 +14,13 @@ const ecryptePassoword = (password) => {
     let hashPass = passwordHash.generate(password)
     return hashPass;
 }
+
+/**
+ * This function u return string
+ * @param {String} passowrd after password
+ * @param {String} encryptePassword descrypted password
+ * @returns {Boolean}
+ */
 const descryptePassword = (passowrd, encryptePassword) => {
     let compareEquals = passwordHash.verify(passowrd, encryptePassword)
     return compareEquals;

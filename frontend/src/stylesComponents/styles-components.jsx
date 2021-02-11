@@ -102,6 +102,19 @@ export const MsgRegister = styled('span')`
 /**Footer login and register */
 
 
+export const LoadingSpinner = styled('img')`
+    animation: Rotate linear 1000ms;
+      @keyframes Rotate {
+        to {
+            transform: rotate(360deg);
+        }
+        from {
+        transform: rotate(0deg);
+        }
+    }
+
+`;
+
 export const FooterS = styled("footer")`
   width: 100%;
   color: #fff;

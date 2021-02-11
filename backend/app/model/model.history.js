@@ -63,11 +63,7 @@ class HistoryModel {
                  * Defined model for instance of Schema Model
                  * @type {mongoose.Model}
                  */
-                let HistoryModel = new this.HistoryModel({
-                    name: String,
-                    history: String,
-                    photoURI: String
-                })
+                let HistoryModel = this.HistoryModel
 
                 resolve({ HistoryModel })
             } catch (error) {

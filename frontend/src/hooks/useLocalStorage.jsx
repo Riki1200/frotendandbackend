@@ -3,16 +3,26 @@ import { useState, useEffect } from 'react';
 
 export const useLocalStorage = (item) => {
     const [registerUser, setStorage] = useState(false);
+    const [token, setToken] = useState('');
+
+
+
     useEffect(() => {
         const LocalStorage = () => {
 
             if (registerUser) {
                 window.localStorage.setItem('akt-login', JSON.stringify({
-                    value: registerUser,
-                    token: item,
-                    dateExpire: Date.now() + 260000
+                    value: {
+                        user: item.name,
+                        emailHash: item.email
+                    },
+                    refresh_token: token,
+                    dateExpire: item.DateExpire
                 }));
             }
+
+
+
 
         }
         LocalStorage();
@@ -27,8 +37,8 @@ export const useLocalStorage = (item) => {
             }
 
         }
-    }, [registerUser, item])
+    }, [registerUser, item, token, setToken])
 
-    return [setStorage];
+    return [setStorage, setToken];
 
 }

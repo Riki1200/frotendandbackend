@@ -26,7 +26,7 @@ addrouter.post('/api/add', function (req, res) {
         Add(HistoryClient).then((_r) => {
             res.json({ ..._r });
         }).catch(err => {
-            console.log(err)
+
             res.json({ ...err });
         })
 

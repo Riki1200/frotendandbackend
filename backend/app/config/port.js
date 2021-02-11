@@ -3,7 +3,11 @@ const path = require('path');
 const PORT = process.env.PORT || 4000;
 
 
-if (process.env.NODE_ENV !== 'production') dontEnv.config({ path: path.resolve(__dirname, '../../.env') })
+if (process.env.NODE_ENV !== 'production') dontEnv.config(
+    {
+        path: path.resolve(__dirname, '../../.env')
+    })
+
 
 
 

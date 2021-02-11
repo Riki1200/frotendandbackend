@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 export function useFetch(url, type) {
-    const [data, setData] = useState({ msg: '' });
-    const [user, setUser] = useState({})
+    const [data, setData] = useState({ msg: '', user: {} });
+    const [user, setUser] = useState({} || {})
 
 
 
@@ -21,27 +21,31 @@ export function useFetch(url, type) {
             return await api.json();
         };
 
-        console.log(user)
+
         getHttp().then(async response => {
 
             if (type === 'login') {
 
-                let { access_token } = response;
-                console.log(access_token)
+                let { access_token, refresh_token } = response;
+
+                console.log({ access_token, refresh_token })
                 fetch(url, {
                     method: "GET",
                     headers: {
                         "Content-type": "application/json",
                         'Authorization': 'Bearer ' + access_token
-                    }
+                    },
+                    body: JSON.stringify({
+                        refresh_token: refresh_token
+                    })
                 }).then(res => res.json())
                     .then(res => {
-
-                        setData({ msg: res?.error?.msg });
+                        console.log(res)
+                        setData(res);
                     })
                     .catch(setData)
             } else {
-                setData({ response });
+                setData({ msg: response?.response?.msg });
             }
 
 

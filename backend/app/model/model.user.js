@@ -52,7 +52,7 @@ class DBModel {
 
     /**
      * propiedad
-     * @property UserModels
+     * @type {Mongoose.Model}
      */
 
     UsersModel = null;
@@ -64,21 +64,20 @@ class DBModel {
      */
 
     constructor() {
-        Mongoose.connection.once('open', () => {
-            connect.then(() => {
-                console.log("Connectes it's sucess")
-            }).catch(error => {
-                let err = new Error(error)
-                console.error(err)
-            })
-        })
+
 
         this.UsersModel = model('Users', UserSchema)
 
 
     }
 
-    async UserDataByDataBase({ username, password, email, birthdate }) {
+
+
+
+    /**
+     * @returns {Promise<Mongoose.Model}
+     */
+    async UserDataByDataBase() {
         return await new Promise(async (resolve, reject) => {
 
             try {
@@ -86,15 +85,8 @@ class DBModel {
                  * Instance for model
                 * @type {Mongoose.Model} UsersModelRegister
                 */
-                const UsersModelRegister = new this.UsersModel({
-                    username: username,
-                    password: password,
-                    email: email,
-                    birthdate: birthdate
-                })
 
-
-                resolve({ UsersModelRegister });
+                resolve({ UserModel: model('Users', UserSchema) });
 
             } catch (error) {
                 reject(error)
