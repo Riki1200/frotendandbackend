@@ -7,12 +7,12 @@
 }
 
 .container .sub_container {
-  background-image: url("/images/bg.jpg");
+  background-color: #fff;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 120ch;
 }
-.container .sub_container .register_content {
+.container .sub_container > .register_content {
+  background-image: url("/images/bg.jpg");
   position: relative;
   width: 100%;
   height: 100%;
@@ -20,11 +20,11 @@
   place-content: center;
   place-items: center;
   justify-items: center;
-
+  background-position: center;
   grid-template-rows: 1fr 100px;
 
   background-repeat: no-repeat;
-  background-size: contain;
+
   background-clip: border-box;
   background-attachment: scroll;
 }
@@ -32,11 +32,14 @@
 .container .sub_container .register_content .main_login {
   height: 100ch;
   display: grid;
-  width: 50ch;
+  width: 60ch;
   place-content: center;
   place-items: center;
   justify-items: start;
-  background-color: #272246;
+
+  background-image: url("/images/bgform.svg");
+  background-size: cover;
+  background-position: top right;
   border-radius: 2px;
   grid-template-rows: 0.1fr 2fr;
   transition: all 0.2s linear;
@@ -98,7 +101,7 @@
   background-color: transparent;
   padding: 8px 28px;
   font-size: 1.3rem;
-  border-bottom: 1px solid rgb(152, 150, 241);
+  border-bottom: 1px solid rgb(255, 255, 255);
   border-top: none;
   border-left: none;
   border-right: none;
@@ -157,7 +160,7 @@
   color: #fff;
   font-size: 1rem;
   letter-spacing: 1px;
-  border-radius: 2px;
+  border-radius: 7px;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -188,7 +191,7 @@
   border-radius: 2px;
   padding: 5px 5ch;
   margin-top: auto;
-  background-color: #aa85ff;
+  background-color: #170927;
   border: none;
   color: #fff;
   font-size: 1rem;

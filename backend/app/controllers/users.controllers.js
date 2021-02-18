@@ -1,6 +1,4 @@
-const { hashSync } = require('bcrypt');
-const { Model } = require('mongoose');
-const { DBModel } = require('../model/model.user')
+const { DBModel, UserModel } = require('../model/model.user')
 
 const { encryptePass, descrytePass } = require('../utils/hash');
 
@@ -11,11 +9,14 @@ let DB = new DBModel();
 
 
 /**
- * 
- * @param {String} name
- * @param {String} email
- * @param {String} password
- * @param {Object} birthdate
+ * @param {object} User
+ * @param {String} User.name
+ * @param {String} User.email
+ * @param {String} User.password
+ * @param {object} User.birthdate
+ * @param {number} User.birthdate.day
+ * @param {string} User.birthdate.month
+ * @param {number} User.birthdate.year
  * @returns {Promise<object>} RegisterUser []
  */
 
@@ -32,14 +33,16 @@ function AddUser({ name, email, password, birthdate }) {
             birthdate: birthdate
         }
 
-        console.log(UserRegister)
+
 
 
 
         DB.UserDataByDataBase().then((UsersRegister) => {
 
+
             /**
-             * @type {Model} UsersModelRegister
+             * 
+             * @type {import('mongoose').Model} UsersModelRegister
              */
             let UsersModelRegister = new UsersRegister.UserModel(UserRegister)
 
@@ -57,53 +60,44 @@ function AddUser({ name, email, password, birthdate }) {
 }
 /**
  * 
- * @param {String} email 
- * @returns {Promise<object>}
+ * @param {object} User Object Destrcturing
+ * @param {string} User.email Email field
+ * @param {string} User.password Password field
+ * @returns {Promise<Array<object>>}
  */
 
 function LoginUser({ email, password }) {
     return new Promise((resolve, reject) => {
-        let regxEmail = new RegExp(email, "gi");
+        let emailValidator = new RegExp(email, "gi");
         /**
+         * Password recived from client
          * @type {String}
          */
-        let r = password;
-
-        DB.UsersModel.find({ email: regxEmail }, (err, user) => {
-            if (err !== null) {
-                return reject(err)
-            }
-
+        let passwordInput = password;
+        UserModel.find({ email: emailValidator }, function (err, user) {
+            if (err) reject(err)
             /**
              * Password hash wich give MongoDB User Model
              * @type {String}
              */
             let passwordHash = user[0].password
 
-            console.log(user)
-
-            if (descrytePass(r, passwordHash)) {
+            if (descrytePass(passwordInput, passwordHash)) {
                 /**
                  * @type {object}
                  */
                 resolve({
                     username: user[0].username,
-                    email: hashSync(user[0].email, 20)
+                    email: user[0].email,
+                    dateExpire: Date.now() + 800000
                 })
+
             } else {
-                reject({ msg: "Password value is void. Please insert valid value" })
-                reject({ msg: "The passowrd is wrong" })
+                reject({ msg: "The password is incorrect! Please, insert correct password" })
+
             }
-
-
-
-
-
-        })
-
-
+        });
     })
-
 }
 
 module.exports = {

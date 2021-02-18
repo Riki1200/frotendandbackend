@@ -7,10 +7,10 @@ const { HistoyModelSchema } = require('../model/model.history');
 
 
 /**
- * 
- * @param {String} name
- * @param {String} history
- * @param {String} url
+ * @param {object} history
+ * @param {String} history.name
+ * @param {String} history.history
+ * @param {String} history.url
  * @returns {Promise<Mongoose.Model>} Add()
  */
 

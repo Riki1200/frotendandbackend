@@ -1,25 +1,39 @@
 
 
-const { DBModel } = require('../model/model.user');
+const { ModelWithoutClass } = require('../model/model.history');
 
 
 
 
-const DB = new DBModel();
 
-
-
-function UpdateController(data) {
+/**
+ * @param {Request} body
+ */
+function UpdateController(body, id_param) {
 
     return new Promise((resolve, reject) => {
-        let sqlOne = 'UPDATE Users SET (title, history, date, url) = (?,?,?,?) WHERE rowid = ?'
-        console.log(...data)
-        DB.UpdateDataByDataBase(sqlOne, [...data]).then(r => {
 
-            resolve(r);
-        }).catch(e => {
-            reject(e);
-        })
+        if (body.name !== "" && body.url !== "" && body.history !== "") {
+
+            ModelWithoutClass.findOneAndReplace(id_param, {
+                name: body.name,
+                history: body.history,
+                photoURI: body.url
+            }, { upsert: true }, (err, doc) => {
+                console.log(err)
+                if (err) reject(err)
+                if (doc) {
+                    console.log(doc)
+                    resolve({ msg: "UPDATE SUCESS" })
+                } else {
+                    reject({ msg: "The user not should update" })
+                }
+            })
+        } else {
+            reject({ msg: "Values is void" })
+        }
+
+
 
 
     })

@@ -5,11 +5,15 @@ const { HistoyModelSchema } = require('../model/model.history');
 function GetHistory() {
     return new Promise((resolve, reject) => {
         HistoyModelSchema.ModelHistory().then(async ModelHistory => {
-            let data = await ModelHistory.find();
-            if (data.length > 0)
-                resolve(data)
-            else
-                reject({ msg: "Not match results found" })
+            ModelHistory.find((err, doc) => {
+
+                if (err) reject({ err })
+                if (doc.length > 0)
+                    resolve(doc)
+                else
+                    reject({ msg: "Not match results found" })
+            })
+
         }).catch(reject)
 
     })

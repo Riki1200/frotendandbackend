@@ -1,9 +1,11 @@
 
 const Mongoose = require('mongoose');
 
-const connect = require('../db/dbConfig');
 
 let { Schema, model, Types } = Mongoose;
+
+
+
 
 
 
@@ -44,6 +46,8 @@ const UserSchema = new Schema({
     collection: "users"
 })
 
+
+
 /**
  * Class for te define model
  */
@@ -51,11 +55,11 @@ const UserSchema = new Schema({
 class DBModel {
 
     /**
-     * propiedad
+     * property
      * @type {Mongoose.Model}
      */
 
-    UsersModel = null;
+    UsersModel = model('Users', UserSchema);
 
     /**
      * Constucotor class
@@ -64,11 +68,7 @@ class DBModel {
      */
 
     constructor() {
-
-
         this.UsersModel = model('Users', UserSchema)
-
-
     }
 
 

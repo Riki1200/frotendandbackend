@@ -1,6 +1,5 @@
 const jsonwebtoken = require('jsonwebtoken');
 
-
 /**
  * Middleware for authetication with JSONWEBTOKEN
  * @param {Request} req 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
-export const PrivateRoute = ({ component: Component, auth, ...rest }) => (
+export const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={(props) => (
         window.localStorage.getItem('akt-login') ?
             (<Component {...props} />)
@@ -12,8 +12,7 @@ export const PrivateRoute = ({ component: Component, auth, ...rest }) => (
                         pathname: '/',
                         state: {
                             from: props.location
-                        },
-                        auth: auth
+                        }
                     }
                 }></Redirect>
             )

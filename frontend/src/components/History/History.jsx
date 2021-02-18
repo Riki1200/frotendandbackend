@@ -87,8 +87,8 @@ export const History = () => {
 
 
         console.log(id)
-        let filterHistories = historys.filter(({ rowid }) => rowid !== id);
-
+        let filterHistories = historys.filter((e) => e._id !== id);
+        console.log(filterHistories)
 
         setHistory(filterHistories)
 
@@ -150,15 +150,15 @@ export const History = () => {
             }
             {historys.length > 0 ?
                 <ol className='history_list'>{
-                    historys.map(({ _id, title, date, history, url }) => (
+                    historys.map(({ _id, name, history, photoURI }) => (
 
                         <li className='list_history' ref={refElement} key={_id}>
 
                             <div className='history_person'>
-                                <h1 className='name_person'>{title}</h1>
-                                <img width="450px" loading='lazy' src={url} alt={title} />
+                                <h1 className='name_person'>{name}</h1>
+                                <img width="450px" loading='lazy' src={photoURI} alt={name} />
                                 <p className='history'>{history}</p>
-                                <span>{date}</span>
+
                             </div>
 
 

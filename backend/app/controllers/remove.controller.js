@@ -1,15 +1,20 @@
-const { HistoyModelSchema } = require('../model/model.history');
+const { ModelWithoutClass } = require('../model/model.history');
 
 
 /**
  * Delete method router for API
- * @param {array} id 
+ * @param {number} id 
  * @function Promise
  */
 
 function DeletedHistory(id) {
     return new Promise((resolve, reject) => {
-
+        ModelWithoutClass.findOneAndDelete({ _id: id }, (err, doc) => {
+            console.log(err)
+            if (err) reject(err)
+            console.log(doc)
+            resolve(doc)
+        })
 
     })
 };

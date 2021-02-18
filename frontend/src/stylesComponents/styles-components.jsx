@@ -56,18 +56,16 @@ export const Msg = styled('p')`
     width: ${props => props.width || '200px'};
     padding: 10px 15px;
     color:#Fff;
-    background-color: ${props => props.type === '0' ? '#eb0f3aff' : '#48CF76'} ;
+    background-color: ${props => props.type === '0' ? '#7800ff' : '#48CF76'} ;
     text-align:center;
     animation: FadeIn forwards linear 250ms;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.2rem;
     @keyframes  FadeIn{
         to {
-            
-                opacity: 1;
+            opacity: 1;
         };
         from {
-                opacity: 0.2;
+            opacity: 0.2;
         };
     }
 `;
@@ -106,9 +104,12 @@ export const LoadingSpinner = styled('img')`
     animation: Rotate linear 1000ms;
       @keyframes Rotate {
         to {
+                opacity: 1;
             transform: rotate(360deg);
         }
         from {
+            
+            opacity: 0.5;
         transform: rotate(0deg);
         }
     }
@@ -122,7 +123,7 @@ export const FooterS = styled("footer")`
   text-align: center;
   font-weight: bold;
   line-height: 65px;
-  margin-top: 80px;
+  margin-top: 20px;
 `;
 /***
  * For portals

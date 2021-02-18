@@ -4,14 +4,19 @@ const getUsers = require('./users.routes.js');
 const getData = require('./history.routes.js');
 const deleteUser = require('./delete.routes.js');
 const updateRouter = require('./update.routes.js');
-module.exports = {
+
+/**
+ * Routes
+ * @returns {Array<import('express').IRoute}
+ */
+module.exports = [
     addrouter,
     addUser,
     getUsers,
     getData,
     deleteUser,
     updateRouter
-}
+]
 
 
 

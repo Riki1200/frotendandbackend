@@ -17,7 +17,7 @@ export const Users = function () {
         </Helmet>
         <article className='content--user'>
             <div className='title_content'>
-                <h1 className='title'>History the person influyent in world</h1>
+                <h1 className='title'>History Of The They People Influyent In The World</h1>
             </div>
 
             <section className='bg--content'>

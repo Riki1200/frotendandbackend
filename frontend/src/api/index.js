@@ -4,7 +4,8 @@ export default {
     get: 'http://localhost:4000/api/get',
     add: 'http://localhost:4000/api/add',
     delete: 'http://localhost:4000/api/delete/',
-    update: 'http://localhost:4000/api/update/'
+    update: 'http://localhost:4000/api/update/',
+    logout: "http://localhost:4000/api/logout"
 };
 
 export const HistoryUser = [

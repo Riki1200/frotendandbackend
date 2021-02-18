@@ -19,9 +19,7 @@ const View = function () {
     return <>
 
         <Switch>
-            <PrivateRoute path='/system' component={Home} auth={
-                window.localStorage.key(0) !== null ? true : false
-            } />
+            <PrivateRoute path='/system' component={Home} />
             <Route path='/'>
                 <div className="register_content">
                     <Register />
@@ -40,7 +38,7 @@ const View = function () {
 export function Container() {
     return <>
         <div className="container">
-            <div className='sub_container'>
+            <div className='sub_container bg_type'>
                 <View />
             </div>
         </div>

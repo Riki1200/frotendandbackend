@@ -420,7 +420,7 @@ body {
   .main_container
   .section_add--content
   .form_add
-  .form_fields:nth-child(2) {
+  .form_fields:nth-child(1) {
   align-items: center;
   padding-bottom: 20px;
   justify-content: baseline;
@@ -444,49 +444,9 @@ body {
   .main_container
   .section_add--content
   .form_add
-  .form_fields:nth-child(2)
-  input[name="year"] {
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 0.1px solid rgba(0, 0, 0, 0.212);
-  outline: none;
-  text-align: center;
-  font-size: 1.2rem;
-  transition: border-bottom linear 200ms;
-  font-family: Sansita, sans-serif;
-}
-
-.container
-  .sub_container
-  .main_container
-  .section_add--content
-  .form_add
-  .form_fields:nth-child(2)
-  input[name="year"]:focus {
-  border-bottom: 0.1px solid rgb(0, 0, 0);
-}
-
-.container
-  .sub_container
-  .main_container
-  .section_add--content
-  .form_add
   .form_fields
   label {
   text-align: center;
-}
-
-.container
-  .sub_container
-  .main_container
-  .section_add--content
-  .form_add
-  .form_fields:nth-child(2)
-  input[name="month"] {
-  border: none;
-  outline: none;
-  width: 100%;
 }
 
 .container
@@ -526,83 +486,11 @@ body {
   .main_container
   .section_add--content
   .form_add
-  .form_fields:nth-child(2)
-  label {
-  display: flex;
-  gap: 18px;
-}
-
-.container
-  .sub_container
-  .main_container
-  .section_add--content
-  .form_add
-  .form_fields:nth-child(2)
-  label
-  #month {
-  width: 18.9em;
-
-  flex-grow: 1;
-  text-align: center;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.185);
-  text-align: center;
-  background-color: transparent;
-  outline: none;
-  text-align-last: center;
-  scroll-behavior: smooth;
-
-  transition: border-bottom linear 200ms;
-}
-
-.container
-  .sub_container
-  .main_container
-  .section_add--content
-  .form_add
-  .form_fields:nth-child(2)
-  label
-  #month:focus {
-  border-bottom: 1px solid rgb(0, 0, 0);
-}
-
-.container
-  .sub_container
-  .main_container
-  .section_add--content
-  .form_add
   .form_fields:nth-child(1)
   label {
   font-size: 3rem;
   font-family: Abril, sans-serif;
   font-weight: 200;
-}
-
-.container
-  .sub_container
-  .main_container
-  .section_add--content
-  .form_add
-  .form_fields:nth-child(2)
-  input[name="day"] {
-  border: none;
-  outline: none;
-  border-bottom: 0.1px solid rgba(0, 0, 0, 0.274);
-  width: 100%;
-  font-size: 1.2rem;
-  text-align: center;
-  font-family: Sansita, sans-serif;
-  transition: border-bottom linear 200ms;
-}
-
-.container
-  .sub_container
-  .main_container
-  .section_add--content
-  .form_add
-  .form_fields:nth-child(2)
-  input[name="day"]:focus {
-  border-bottom: 0.1px solid rgb(0, 0, 0);
 }
 
 .container
@@ -622,7 +510,7 @@ body {
   .main_container
   .section_add--content
   .form_add
-  .form_fields:nth-child(4)
+  .form_fields:nth-child(3)
   input[type="text"] {
   width: 100%;
   font-size: 2rem;
@@ -641,7 +529,7 @@ body {
   .main_container
   .section_add--content
   .form_add
-  .form_fields:nth-child(4)
+  .form_fields:nth-child(3)
   input[type="url"]:focus {
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.925);
 }
@@ -663,7 +551,7 @@ body {
   .main_container
   .section_add--content
   .form_add
-  .form_fields:nth-child(3)
+  .form_fields:nth-child(2)
   textarea {
   resize: none;
   width: 80vw;
@@ -684,7 +572,7 @@ body {
   .main_container
   .section_add--content
   .form_add
-  .form_fields:nth-child(3)
+  .form_fields:nth-child(2)
   textarea:focus {
   border: 1px solid rgb(3, 0, 0);
 }
@@ -694,7 +582,7 @@ body {
   .main_container
   .section_add--content
   .form_add
-  .form_fields:nth-child(3)
+  .form_fields:nth-child(2)
   .len_text {
   position: absolute;
   line-height: 20px;
@@ -713,23 +601,7 @@ body {
   .main_container
   .section_add--content
   .form_add
-  .form_fields:nth-child(2)
-  .date_title {
-  align-self: center;
-  flex-grow: 1;
-  flex-basis: 100%;
-  text-align: center;
-  font-size: 3rem;
-  font-family: Abril;
-  font-weight: 200;
-}
-
-.container
-  .sub_container
-  .main_container
-  .section_add--content
-  .form_add
-  .form_fields:nth-child(5) {
+  .form_fields:nth-child(4) {
   width: 100%;
 }
 .container
@@ -737,7 +609,7 @@ body {
   .main_container
   .section_add--content
   .form_add
-  .form_fields:nth-child(5)
+  .form_fields:nth-child(4)
   input[type="submit"] {
   width: 10em;
   padding: 10px 30px;
@@ -756,7 +628,7 @@ body {
   .main_container
   .section_add--content
   .form_add
-  .form_fields:nth-child(5)
+  .form_fields:nth-child(4)
   input[type="submit"]:active {
   transform: scale(1.1);
 }

@@ -1,9 +1,15 @@
 const express = require("express");
 const jsonwebtoken = require('jsonwebtoken');
+const AccessToken = require('../utils/token');
 const { AddUser, LoginUser } = require("../controllers/users.controllers");
 const { UserModel } = require('../model/model.user');
 const AuthMiddleware = require('../middleware/auth.middleware');
 
+
+
+/**
+ * @type {express.Router}
+ */
 const addUser = express.Router({ caseSensitive: true });
 
 
@@ -28,25 +34,29 @@ addUser.post("/api/register", async function (req, res) {
 
 
             AddUser(UserPOST).then(response => {
-                res.status(201).json({ response });
+                res.status(201).json({ msg: response.msg });
             }).catch((_msg) => {
-
+                console.log(_msg)
                 res.status(409).json({ msg: "User exists" });
             })
 
         }
 
     } catch (error) {
-        console.log(error)
+
         res.status(404).json(error);
-    } finally {
-        console.info('Not created')
     }
 
 
 
 
 });
+
+
+addUser.delete('/api/logout', function (req, res) {
+    RefeshTokens = RefeshTokens.filter(token => token !== req.body.token);
+    res.sendStatus(204);
+})
 
 
 addUser.post('/api/token', (req, res) => {
@@ -68,78 +78,76 @@ addUser.post('/api/token', (req, res) => {
     })
 
 })
-addUser.post("/api/login", (req, res) => {
-    let { email, password } = req.body;
 
 
-    if (email && password) {
-        let userAccount = {
-            email: email,
-            password: password
-        }
-        try {
-            let SearchEmail = new RegExp(email, 'gi')
-            UserModel.find({ email: SearchEmail }, (err, user) => {
+    +
 
-                if (err !== null) {
-
-                    return res.sendStatus(401).json(
-                        { msg: err }
-                    )
-                } else {
-                    if (user.length > 0) {
-
-                        let jwtSign = AccessToken(userAccount);
-                        let refreshToken = jsonwebtoken.sign({ userAccount }, process.env.REFRESH_TOKEN)
+    addUser.post("/api/login", (req, res) => {
+        let { email, password } = req.body;
 
 
-                        RefeshTokens.push(refreshToken);
+        if (email && password) {
+            let userAccount = {
+                email: email,
+                password: password
+            }
+            try {
+                let SearchEmail = new RegExp(email, 'gi')
+                UserModel.find({ email: SearchEmail }, (err, user) => {
 
-                        return res.json({ access_token: jwtSign, refresh_token: refreshToken })
+                    if (err !== null) {
+                        return res.sendStatus(401).json({ err })
+                    } else {
+                        if (user.length > 0) {
+
+                            let jwtSign = AccessToken(userAccount);
+                            let refreshToken = jsonwebtoken.sign({ userAccount }, process.env.REFRESH_TOKEN)
+
+
+                            RefeshTokens.push(refreshToken);
+
+                            return res.json({ access_token: jwtSign, refresh_token: refreshToken })
+                        }
+
+                        res.json({ msg: "User not found. Please, created account", value: false })
                     }
 
-                    res.json({ msg: "User not found. Please, created account" })
+                })
+            } catch (error) {
+                console.log('ERROR')
+            }
 
-                }
 
-
-
-            })
-        } catch (error) {
-            console.log('ERROR')
         }
-
-
-    }
-})
-    .get('/api/login', AuthMiddleware, (req, res) => {
+    }).get('/api/login', AuthMiddleware, (req, res) => {
         let { email, password } = req.user.user;
-        let { refresh_token } = req.body.refresh_token;
-        if (email && password && refresh_token) {
 
+        if (email && password) {
             let user = {
                 email: email,
                 password: password
             }
-
-            console.log(user)
-
-
             LoginUser(user).then((response) => {
 
+
                 res.status(200).json({
-                    user: response,
-                    dateExpire: Date.now() + 266000,
-                    token: refresh_token
+                    user: {
+                        username: response.username,
+                        email: response.email,
+                        dateExpire: response.dateExpire,
+                        refreshToken: RefeshTokens[0]
+                    },
+                    value: false
+
                 })
+
+
+
+
             }).catch(error => {
                 console.log(error)
-                res.json(error)
+                res.status(403).json({ msg: error })
             })
-
-
-
-
 
         }
 
@@ -150,17 +158,5 @@ addUser.post("/api/login", (req, res) => {
 
 
 
-/**
- * 
- * @param {object} user 
- * @returns {String}
- */
-function AccessToken(user) {
-    return jsonwebtoken.sign({ user }, process.env.TOKEN,
-        {
-            expiresIn: "1h",
-            algorithm: "HS512"
-        })
-}
 
 module.exports = addUser;

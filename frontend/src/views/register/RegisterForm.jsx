@@ -26,7 +26,6 @@ export const FormRegister = () => {
 
         let formData = new FormData(evt.target);
 
-        console.log(formData.get('name'), formData.get('email'))
 
         let el = evt.target;
         if (formData.get('name') !== ""
@@ -45,7 +44,7 @@ export const FormRegister = () => {
             };
 
             let val = validateEmail.test(formData.get('email'))
-            console.log(val)
+
             if (val) {
 
                 setUser({
@@ -66,7 +65,7 @@ export const FormRegister = () => {
 
 
 
-        console.log(data)
+
     };
 
 
@@ -164,9 +163,15 @@ export const FormRegister = () => {
                     </div>
                     <div className='date_div-group'>
                         <input
-                            type="text"
+                            type="number"
                             id='day'
-                            name='day' />
+                            name='day'
+                            min="1"
+                            minLength="1"
+                            maxLength="31"
+                            max="31"
+                            style={{ appearance: "searchfield" }}
+                        />
                         <input
                             list="months"
 

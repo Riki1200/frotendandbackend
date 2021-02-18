@@ -23,7 +23,7 @@ export const useUsers = (url) => {
 
 
         api(url).then(response => {
-
+            console.log(response)
             setData(response);
 
         }).catch((err) => {
