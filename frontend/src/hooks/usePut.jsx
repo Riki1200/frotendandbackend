@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 export function usePut(url, id) {
-    const [state, setState] = useState({} || function () {
-        setState({})
+    const [state, setState] = useState(function () {
+        return {}
     });
 
     const [msg, setMsg] = useState({ msg: '' })
@@ -19,7 +19,7 @@ export function usePut(url, id) {
                 body: JSON.stringify(state)
             });
 
-            return data.json();
+            return await data.json();
         }
 
 

@@ -40,7 +40,10 @@ export const Header = function () {
                 outline: "none",
                 border: "none"
             }} onClick={AddClass}>
-                <img src='/icons/nav.png' alt='nav' style={{ maxWidth: "60px" }} />
+                <img
+                    src='/icons/nav.png'
+                    alt='nav'
+                    style={{ maxWidth: "60px" }} />
             </button>
             <buttonContext.Provider value={setVali}>
                 <Navbar classStyle={vali ? 'nav_responsive' : ''} />

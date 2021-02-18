@@ -8,7 +8,6 @@ const HistorySchema = new Schema({
     _id: {
         type: mongoose.Types.ObjectId,
         auto: true,
-        required: true,
     },
     name: {
         type: String,
@@ -22,7 +21,6 @@ const HistorySchema = new Schema({
     },
     photoURI: {
         type: String,
-        required: true,
         required: true
     },
 
@@ -63,13 +61,9 @@ class HistoryModel {
                  * Defined model for instance of Schema Model
                  * @type {mongoose.Model}
                  */
-                let HistoryModel = new this.HistoryModel({
-                    name: String,
-                    history: String,
-                    photoURI: String
-                })
+                let HistoryModel = this.HistoryModel
 
-                resolve({ HistoryModel })
+                resolve(model('history', HistorySchema))
             } catch (error) {
                 reject(error)
             }

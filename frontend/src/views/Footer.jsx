@@ -16,7 +16,6 @@ export function Footer() {
         <footer className='footer_content'>
             <div
                 className='footer_child'>
-                <h2>Histoy people influyent in world</h2>
                 <p>NodeJS+SQLite3+ReactJS+ExpressJS</p>
             </div>
             <div

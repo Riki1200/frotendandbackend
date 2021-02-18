@@ -9,14 +9,9 @@ const updateRouter = express.Router({ caseSensitive: true });
 updateRouter.put('/api/update/:id', function (req, res) {
 
     let id = req.params.id;
+    if (id !== null) {
 
-    let { name, day, month, year, history, url } = req.body;
-
-
-
-    if (name !== undefined && history !== undefined && day !== undefined && month !== undefined && year !== undefined && url !== undefined) {
-
-        UpdateController([name, history, `${day}/${month}/${year}`, url, parseInt(id)])
+        UpdateController(req.body, id)
             .then(r => {
                 res.json(r)
             }).catch(e => {

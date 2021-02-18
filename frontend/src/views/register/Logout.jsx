@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
+//import api from '../../api';
 export const LogoutIcon = styled('img')`
     width: 18px;
     
@@ -12,7 +13,7 @@ export const LogoutUser = ({ loadStorage }) => {
 
     const [expire, setExpire] = useState(false);
 
-    /*useEffect(() => {
+    useEffect(() => {
 
         let getStorage = window.localStorage.getItem(window.localStorage.key(0));
         console.log(getStorage)
@@ -24,18 +25,17 @@ export const LogoutUser = ({ loadStorage }) => {
                     window.localStorage.clear();
                     window.location.reload();
                     setExpire(true);
-                    console.log(expire)
+
                 }
+
             }, 1500);
         }
-    }, [expire]);
-*/
-    useEffect(() => {
-
         return () => {
-            setExpire(false)
+            clearInterval();
         }
-    }, [expire])
+    }, [expire]);
+
+
 
 
     if (expire === true) {
@@ -43,7 +43,9 @@ export const LogoutUser = ({ loadStorage }) => {
     }
     return (
         <div className='logout_content'>
-            <button className="button_logout" onClick={loadStorage}>
+            <button className="button_logout" onClick={(evt) => {
+                loadStorage(evt)
+            }}>
                 Logout   <LogoutIcon src='/icons/logout.svg' alt='icon' />
             </button>
         </div >

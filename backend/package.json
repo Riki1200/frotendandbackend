@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "test": "mocha app/test/**/*.js"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
+    "mocha": "^8.2.1",
     "morgan": "^1.10.0"
   }
 }

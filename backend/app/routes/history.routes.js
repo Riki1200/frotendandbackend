@@ -8,17 +8,16 @@ const getData = express.Router({ caseSensitive: true });
 
 
 getData.get('/api/get', function (_, res) {
-    GetHistorqy().then((_) => {
+    GetHistory().then((_) => {
         res.json(_);
     }).catch((_) => {
-        res.status(402).json(..._);
+        console.log(_)
+        res.status(402).json(_);
     })
-})
-
-getData.get('/api/get/:id', (req, res) => {
+}).get('/api/get/:id', (req, res) => {
     const id = req.params.id;
-    console.log(id)
-    GetHistoryId(parseInt(id)).then((_) => {
+
+    GetHistoryId(id).then((_) => {
         res.json(_);
     }).catch((_) => {
 

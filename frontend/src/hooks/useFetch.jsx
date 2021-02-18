@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react";
 
 export function useFetch(url, type) {
-    const [data, setData] = useState({ msg: '' });
+    const [data, setData] = useState({});
     const [user, setUser] = useState({})
-
+    const [loading, setLoading] = useState(false);
 
 
 
     useEffect(() => {
+
+
+        /**
+         * @returns {Promise}
+         */
         const getHttp = async () => {
+            /**
+             * @type {RequestInit}
+             */
             const options = {
                 method: "POST",
                 headers: {
@@ -21,34 +29,65 @@ export function useFetch(url, type) {
             return await api.json();
         };
 
-        console.log(user)
+
         getHttp().then(async response => {
 
             if (type === 'login') {
 
-                let { access_token } = response;
-                console.log(access_token)
-                fetch(url, {
-                    method: "GET",
-                    headers: {
-                        "Content-type": "application/json",
-                        'Authorization': 'Bearer ' + access_token
-                    }
-                }).then(res => res.json())
-                    .then(res => {
+                if (response?.value !== undefined) {
 
-                        setData({ msg: res?.error?.msg });
-                    })
-                    .catch(setData)
+                    setData({ msg: response?.msg, value: true })
+
+                } else {
+                    let { access_token, refresh_token } = response;
+                    console.log(response)
+                    if (access_token && refresh_token) {
+                        setLoading(true)
+                        fetch(url, {
+                            method: "GET",
+                            headers: {
+                                "Content-type": "application/json",
+                                'Authorization': 'Bearer ' + access_token
+                            }
+                        }).then(res => res.json())
+                            .then(res => {
+                                console.log(res)
+                                if (Object.keys(res).indexOf('user') !== -1) {
+                                    setData({
+                                        username: res.user.username,
+                                        email: res.user.email,
+                                        dateExpire: res.user.dateExpire,
+                                        refreshToken: refresh_token
+                                    });
+
+                                } else {
+                                    setData({ msg: res?.msg.msg });
+                                }
+                                setTimeout(() => setLoading(false), 3000);
+                            })
+                            .catch(error => {
+                                setLoading(false)
+                                console.log(error)
+                                setData(error)
+                            })
+
+                    }
+
+
+                }
             } else {
-                setData({ response });
+
+                let { msg } = response;
+
+                setData({ msg: msg });
             }
 
 
 
         });
-    }, [user, setUser, url, type])
+
+    }, [type, url, user])
 
 
-    return { data, setUser };
+    return { data, setUser, loading };
 }

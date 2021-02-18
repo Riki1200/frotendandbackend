@@ -1,9 +1,11 @@
 
 const Mongoose = require('mongoose');
 
-const connect = require('../db/dbConfig');
 
 let { Schema, model, Types } = Mongoose;
+
+
+
 
 
 
@@ -44,6 +46,8 @@ const UserSchema = new Schema({
     collection: "users"
 })
 
+
+
 /**
  * Class for te define model
  */
@@ -51,11 +55,11 @@ const UserSchema = new Schema({
 class DBModel {
 
     /**
-     * propiedad
-     * @property UserModels
+     * property
+     * @type {Mongoose.Model}
      */
 
-    UsersModel = null;
+    UsersModel = model('Users', UserSchema);
 
     /**
      * Constucotor class
@@ -64,21 +68,16 @@ class DBModel {
      */
 
     constructor() {
-        Mongoose.connection.once('open', () => {
-            connect.then(() => {
-                console.log("Connectes it's sucess")
-            }).catch(error => {
-                let err = new Error(error)
-                console.error(err)
-            })
-        })
-
         this.UsersModel = model('Users', UserSchema)
-
-
     }
 
-    async UserDataByDataBase({ username, password, email, birthdate }) {
+
+
+
+    /**
+     * @returns {Promise<Mongoose.Model}
+     */
+    async UserDataByDataBase() {
         return await new Promise(async (resolve, reject) => {
 
             try {
@@ -86,15 +85,8 @@ class DBModel {
                  * Instance for model
                 * @type {Mongoose.Model} UsersModelRegister
                 */
-                const UsersModelRegister = new this.UsersModel({
-                    username: username,
-                    password: password,
-                    email: email,
-                    birthdate: birthdate
-                })
 
-
-                resolve({ UsersModelRegister });
+                resolve({ UserModel: model('Users', UserSchema) });
 
             } catch (error) {
                 reject(error)

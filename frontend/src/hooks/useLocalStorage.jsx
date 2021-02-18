@@ -1,34 +1,43 @@
 import { useState, useEffect } from 'react';
 
 
-export const useLocalStorage = (item) => {
-    const [registerUser, setStorage] = useState(false);
+
+
+export const useLocalStorage = () => {
+    const [valid, setValid] = useState(false);
+
+
+
+    const [user, setUserStorage] = useState({});
+
+
+
     useEffect(() => {
         const LocalStorage = () => {
 
-            if (registerUser) {
+
+
+            if (valid) {
                 window.localStorage.setItem('akt-login', JSON.stringify({
-                    value: registerUser,
-                    token: item,
-                    dateExpire: Date.now() + 260000
+                    user: user.username,
+                    email: user.email,
+                    refresh_token: user.refreshToken,
+                    dateExpire: user.dateExpire
                 }));
             }
+
+
+
 
         }
         LocalStorage();
         return () => {
-            let getTimer = window.localStorage.key(0);
-            let getStore = window.localStorage.getItem(getTimer)
-            if (getStore) {
-                let { dateExpire } = JSON.parse(getStore);
-                if (Date.now() >= dateExpire) {
-                    return window.localStorage.clear();
-                }
-            }
 
+            setUserStorage({})
+            setValid(false);
         }
-    }, [registerUser, item])
+    }, [valid, setValid, user, setUserStorage])
 
-    return [setStorage];
+    return [setUserStorage, setValid];
 
 }

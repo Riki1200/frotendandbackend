@@ -4,11 +4,13 @@ import App from './App';
 
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
+
+let Root = (
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+  </React.StrictMode>
+)
+
+ReactDOM.render(Root, document.getElementById('root'));
 
 serviceWorker.unregister();

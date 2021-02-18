@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link } from 'react-router-dom';
 import API from '../../api/index';
@@ -30,9 +30,9 @@ export const Edit = function () {
 
         ev.preventDefault();
         setLoading(!loading);
+        console.log(msg)
 
-
-        if (name && history && url) {
+        if (name !== '' && history !== '' && url !== '') {
             setState({
                 name: name,
                 history: history,
@@ -52,6 +52,30 @@ export const Edit = function () {
 
 
     let maxLengthLetters = 600;
+
+
+    useEffect(() => {
+
+        const get = async () => {
+            let asyncFetch = await fetch(API.get + "/" + id, {
+                method: "GET"
+            })
+            return await asyncFetch.json();
+        }
+
+        get().then(r => {
+            if (Object.keys(r).length > 0) {
+                console.log(r)
+                setName(r.name)
+                setHistory(r.history)
+                setUrl(r.photoURI)
+            }
+
+        })
+
+    }, [])
+
+
 
 
     return (
@@ -100,6 +124,7 @@ export const Edit = function () {
                             type="text"
                             id='name'
                             autoComplete="off"
+                            value={name}
                             onChange={ev => setName(ev.target.value)} />
                     </div>
 
@@ -112,7 +137,7 @@ export const Edit = function () {
                             id='history'
                             name="history"
                             placeholder="History..."
-
+                            value={history}
                             autoComplete="false"
                             onChange={ev => setHistory(ev.target.value)}
                             maxLength={maxLengthLetters}
@@ -126,7 +151,7 @@ export const Edit = function () {
                         <input
                             type='text'
                             id='url'
-
+                            value={url}
                             onChange={ev => setUrl(ev.target.value)}
                             name='url' />
 
@@ -135,7 +160,10 @@ export const Edit = function () {
                         <input type="submit" value="Add" />
                     </div>
                     {massages ? <Msg type='0'>No puede dejar los campos vacios para la actualizacion</Msg> : null}
-                    {msg.msg ? <Msg type='1'>History update is success</Msg> : null}
+                    {msg.msg ? <Msg type='1'>History update is success</Msg> : null
+
+
+                    }
                 </form>
             </section>
         </>
